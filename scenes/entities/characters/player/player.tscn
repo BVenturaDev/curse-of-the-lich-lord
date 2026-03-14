@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://b4lephsux7gic"]
 
+[ext_resource type="Script" uid="uid://d2jpv0fn8cfna" path="res://src/entities/characters/player/player.gd" id="1_rptfv"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p2io3"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1124181715]
+script = ExtResource("1_rptfv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1773059256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
