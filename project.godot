@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="Curse of the Lich Lord"
+run/main_scene="uid://bfbc61ssu5vyg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [physics]
 

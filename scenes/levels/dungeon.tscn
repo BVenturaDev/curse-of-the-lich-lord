@@ -1,3 +1,51 @@
 [gd_scene format=3 uid="uid://bfbc61ssu5vyg"]
 
+[ext_resource type="MeshLibrary" uid="uid://ctc5csj7eu2x5" path="res://mesh_libraries/walls.meshlib" id="1_wail4"]
+[ext_resource type="PackedScene" uid="uid://b4lephsux7gic" path="res://scenes/entities/characters/player/player.tscn" id="2_srduu"]
+
+[sub_resource type="Environment" id="Environment_wail4"]
+ambient_light_source = 2
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+fog_light_color = Color(0.09533823, 0.057621166, 0.19377849, 1)
+fog_light_energy = 0.25
+fog_density = 0.25
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.25
+volumetric_fog_albedo = Color(0.2038342, 0.14235827, 0.37615308, 1)
+
 [node name="Dungeon" type="Node3D" unique_id=2085671741]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1657535701]
+environment = SubResource("Environment_wail4")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=125871588]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh_library = ExtResource("1_wail4")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 0, 2, 65535, 65535, 2, 0, 65535, 2, 0, 0, 2, 65535, 65534, 0, 0, 65534, 0, 65535, 1, 6, 0, 1, 6, 1, 65534, 1, 1, 0, 4, 1, 65535, 4, 1, 1, 10, 65534, 65535, 2, 65534, 0, 2, 65533, 0, 2, 65533, 65535, 2, 65534, 65534, 3, 65534, 1, 8, 65534, 2, 4, 65534, 3, 4, 65534, 4, 4, 65534, 5, 4, 65534, 6, 10, 65532, 6, 12, 65533, 6, 6, 65533, 5, 2, 65533, 4, 2, 65533, 3, 2, 65533, 2, 2, 65533, 1, 2, 65532, 5, 5, 65532, 4, 5, 65532, 3, 5, 65532, 2, 5, 65532, 1, 5, 65532, 0, 5, 65532, 65535, 5, 65532, 65534, 5, 65533, 65534, 2, 65532, 65533, 5, 65534, 65533, 4, 65533, 65533, 2, 65532, 65532, 13, 65534, 65532, 15, 65533, 65532, 0)
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1951336258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7238512, 3.2993217, 0)
+light_color = Color(0.64552474, 0.8599795, 0.76644886, 1)
+omni_range = 9.673075
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=652975361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4635186, 3.2993217, -7.1210833)
+light_color = Color(0.64552474, 0.8599795, 0.76644886, 1)
+omni_range = 9.673075
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=414376476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.021125, 3.2993217, 12.951909)
+light_color = Color(0.64552474, 0.8599795, 0.76644886, 1)
+omni_range = 9.673075
+
+[node name="Player" parent="." unique_id=1124181715 instance=ExtResource("2_srduu")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
