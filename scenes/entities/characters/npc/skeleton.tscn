@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://cguw3pbl6mdcn"]
 
+[ext_resource type="PackedScene" uid="uid://5jpjc2mboldd" path="res://scenes/models/characters/skeleton.tscn" id="1_tb6ca"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13oou"]
+radius = 0.30517578
+height = 1.8569336
 
 [node name="Skeleton" type="CharacterBody3D" unique_id=1584703577]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=899877823]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9284668, 0)
 shape = SubResource("CapsuleShape3D_13oou")
+
+[node name="skeleton" parent="." unique_id=964237925 instance=ExtResource("1_tb6ca")]

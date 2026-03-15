@@ -1,0 +1,366 @@
+[gd_scene format=3 uid="uid://5jpjc2mboldd"]
+
+[ext_resource type="PackedScene" uid="uid://c60gj7lbqlusg" path="res://assets/models/characters/skeleton/skeleton.glb" id="1_paiva"]
+
+[sub_resource type="Animation" id="Animation_paiva"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/LegRMarker3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.165, 0.011, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/ArmLPoleMarker3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.47341028, 1.3831143, 0.12509681)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D/ArmLMarker3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8402048, 1.2073593, 0.46310028)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D/ArmRPoleMarker3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.473, 1.383, 0.125)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D/ArmRMarker3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.84, 1.207, 0.463)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D/LegLPoleMarker3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1651318, 0.45026693, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D/LegLMarker3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1651318, 0.011253327, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D/LegRPoleMarker3D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.165, 0.45, 0)]
+}
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Armature/Skeleton3D:Jaw")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.8009061, -7.138135e-08, -2.8642629e-07, 0.59879)
+
+[sub_resource type="Animation" id="Animation_0850x"]
+resource_name = "rest"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/LegRMarker3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.165, 0.011, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/ArmLPoleMarker3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.47341028, 1.3831143, 0.12509681)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D/ArmLMarker3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8402048, 1.2073593, 0.46310028)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D/ArmRPoleMarker3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.473, 1.383, 0.125)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D/ArmRMarker3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.84, 1.207, 0.463)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D/LegLPoleMarker3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1651318, 0.45026693, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D/LegLMarker3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1651318, 0.011253327, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D/LegRPoleMarker3D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.165, 0.45, 0)]
+}
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Armature/Skeleton3D:Jaw")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.8009061, -7.138135e-08, -2.8642629e-07, 0.59879)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_paiva"]
+_data = {
+&"RESET": SubResource("Animation_paiva"),
+&"rest": SubResource("Animation_0850x")
+}
+
+[node name="skeleton" unique_id=964237925 instance=ExtResource("1_paiva")]
+
+[node name="ArmLPoleMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="1" unique_id=222919453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47341028, 1.3831143, 0.12509681)
+
+[node name="ArmLMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="2" unique_id=1420807681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8402048, 1.2073593, 0.46310028)
+
+[node name="ArmRPoleMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="3" unique_id=859914413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.473, 1.383, 0.125)
+
+[node name="ArmRMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="4" unique_id=775119685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.84, 1.207, 0.463)
+
+[node name="LegLPoleMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="5" unique_id=440930747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1651318, 0.45026693, 0)
+
+[node name="LegLMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="6" unique_id=333126515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1651318, 0.011253327, 0)
+
+[node name="LegRPoleMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="7" unique_id=142072083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.165, 0.45, 0)
+
+[node name="LegRMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="8" unique_id=1834516562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.165, 0.011, 0)
+
+[node name="ArmLFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="9" unique_id=2037472754]
+setting_count = 2
+settings/0/target_node = NodePath("../ArmLPoleMarker3D")
+settings/1/target_node = NodePath("../ArmLMarker3D")
+settings/0/root_bone_name = "Arm_l"
+settings/0/root_bone = 7
+settings/0/end_bone_name = "ForeArm_l"
+settings/0/end_bone = 8
+settings/0/extend_end_bone = false
+settings/0/joint_count = 2
+settings/1/root_bone_name = "ForeArm_l"
+settings/1/root_bone = 8
+settings/1/end_bone_name = "Hand_l"
+settings/1/end_bone = 9
+settings/1/extend_end_bone = false
+settings/1/joint_count = 2
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/1/joints/0/rotation_axis = 3
+settings/1/joints/0/limitation = null
+settings/1/joints/1/rotation_axis = 3
+settings/1/joints/1/limitation = null
+
+[node name="ArmRFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="10" unique_id=774715117]
+setting_count = 2
+settings/0/target_node = NodePath("../ArmRPoleMarker3D")
+settings/1/target_node = NodePath("../ArmRMarker3D")
+settings/0/root_bone_name = "Arm_r"
+settings/0/root_bone = 11
+settings/0/end_bone_name = "ForeArm_r"
+settings/0/end_bone = 12
+settings/0/extend_end_bone = false
+settings/0/joint_count = 2
+settings/1/root_bone_name = "ForeArm_r"
+settings/1/root_bone = 12
+settings/1/end_bone_name = "Hand_r"
+settings/1/end_bone = 13
+settings/1/extend_end_bone = false
+settings/1/joint_count = 2
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/1/joints/0/rotation_axis = 3
+settings/1/joints/0/limitation = null
+settings/1/joints/1/rotation_axis = 3
+settings/1/joints/1/limitation = null
+
+[node name="LegLFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="11" unique_id=1102330881]
+setting_count = 2
+settings/0/target_node = NodePath("../LegLPoleMarker3D")
+settings/1/target_node = NodePath("../LegLMarker3D")
+settings/0/root_bone_name = "Leg_l"
+settings/0/root_bone = 15
+settings/0/end_bone_name = "Shin_l"
+settings/0/end_bone = 16
+settings/0/extend_end_bone = false
+settings/0/joint_count = 2
+settings/1/root_bone_name = "Shin_l"
+settings/1/root_bone = 16
+settings/1/end_bone_name = "Foot_l"
+settings/1/end_bone = 17
+settings/1/extend_end_bone = false
+settings/1/joint_count = 2
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/1/joints/0/rotation_axis = 3
+settings/1/joints/0/limitation = null
+settings/1/joints/1/rotation_axis = 3
+settings/1/joints/1/limitation = null
+
+[node name="LegRFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="12" unique_id=813118961]
+setting_count = 2
+settings/0/target_node = NodePath("../LegRPoleMarker3D")
+settings/1/target_node = NodePath("../LegRMarker3D")
+settings/0/root_bone_name = "Leg_r"
+settings/0/root_bone = 18
+settings/0/end_bone_name = "Shin_r"
+settings/0/end_bone = 19
+settings/0/extend_end_bone = false
+settings/0/joint_count = 2
+settings/1/root_bone_name = "Shin_r"
+settings/1/root_bone = 19
+settings/1/end_bone_name = "Foot_r"
+settings/1/end_bone = 20
+settings/1/extend_end_bone = false
+settings/1/joint_count = 2
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/1/joints/0/rotation_axis = 3
+settings/1/joints/0/limitation = null
+settings/1/joints/1/rotation_axis = 3
+settings/1/joints/1/limitation = null
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="13" unique_id=734666106]
+target_node = NodePath("../LookAtMarker3D")
+bone_name = "Head"
+bone = 5
+origin_offset = Vector3(0, 0.26, 0)
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.5707964
+primary_damp_threshold = 1.0
+secondary_limit_angle = 6.2831855
+secondary_damp_threshold = 1.0
+
+[node name="LookAtMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="14" unique_id=1772797483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.644079, 0.46231097)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1761203023]
+libraries/ = SubResource("AnimationLibrary_paiva")

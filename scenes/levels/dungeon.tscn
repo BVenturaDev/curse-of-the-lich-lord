@@ -2,7 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://ctc5csj7eu2x5" path="res://mesh_libraries/walls.meshlib" id="1_wail4"]
 [ext_resource type="PackedScene" uid="uid://b4lephsux7gic" path="res://scenes/entities/characters/player/player.tscn" id="2_srduu"]
-[ext_resource type="PackedScene" uid="uid://c60gj7lbqlusg" path="res://assets/models/characters/skeleton/skeleton.glb" id="3_s5a2w"]
+[ext_resource type="PackedScene" uid="uid://cguw3pbl6mdcn" path="res://scenes/entities/characters/npc/skeleton.tscn" id="3_s5a2w"]
 
 [sub_resource type="Environment" id="Environment_wail4"]
 ambient_light_source = 2
@@ -50,5 +50,5 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -6, 0)
 
-[node name="skeleton" parent="." unique_id=1092835741 instance=ExtResource("3_s5a2w")]
-transform = Transform3D(-0.10008387, 0, 0.994979, 0, 1, 0, -0.994979, 0, -0.10008387, -3.5148427, 0.006447787, -0.062921524)
+[node name="Skeleton" parent="." unique_id=1584703577 instance=ExtResource("3_s5a2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7320724, 0.006447906, -15.616191)
