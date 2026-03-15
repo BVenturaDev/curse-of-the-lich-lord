@@ -107,6 +107,30 @@ tracks/8/path = NodePath("Armature/Skeleton3D:Jaw")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = PackedFloat32Array(0, 1, 0.8009061, -7.138135e-08, -2.8642629e-07, 0.59879)
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Armature/Skeleton3D/SpineMarker3D:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5733199, -0.046419695)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Armature/Skeleton3D/SpinePoleMarker3D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.181026, -0.076353684)]
+}
 
 [sub_resource type="Animation" id="Animation_0850x"]
 resource_name = "rest"
@@ -214,6 +238,30 @@ tracks/8/path = NodePath("Armature/Skeleton3D:Jaw")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = PackedFloat32Array(0, 1, 0.8009061, -7.138135e-08, -2.8642629e-07, 0.59879)
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Armature/Skeleton3D/SpineMarker3D:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5733199, -0.046419695)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Armature/Skeleton3D/SpinePoleMarker3D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.181026, -0.076353684)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_paiva"]
 _data = {
@@ -247,7 +295,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.165, 0.45, 0)
 [node name="LegRMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="8" unique_id=1834516562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.165, 0.011, 0)
 
-[node name="ArmLFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="9" unique_id=2037472754]
+[node name="SpinePoleMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="9" unique_id=1783665850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.181026, -0.076353684)
+
+[node name="SpineMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="10" unique_id=626895344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5733199, -0.046419695)
+
+[node name="ArmLFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="11" unique_id=2037472754]
 setting_count = 2
 settings/0/target_node = NodePath("../ArmLPoleMarker3D")
 settings/1/target_node = NodePath("../ArmLMarker3D")
@@ -272,7 +326,7 @@ settings/1/joints/0/limitation = null
 settings/1/joints/1/rotation_axis = 3
 settings/1/joints/1/limitation = null
 
-[node name="ArmRFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="10" unique_id=774715117]
+[node name="ArmRFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="12" unique_id=774715117]
 setting_count = 2
 settings/0/target_node = NodePath("../ArmRPoleMarker3D")
 settings/1/target_node = NodePath("../ArmRMarker3D")
@@ -297,7 +351,7 @@ settings/1/joints/0/limitation = null
 settings/1/joints/1/rotation_axis = 3
 settings/1/joints/1/limitation = null
 
-[node name="LegLFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="11" unique_id=1102330881]
+[node name="LegLFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="13" unique_id=1102330881]
 setting_count = 2
 settings/0/target_node = NodePath("../LegLPoleMarker3D")
 settings/1/target_node = NodePath("../LegLMarker3D")
@@ -322,7 +376,7 @@ settings/1/joints/0/limitation = null
 settings/1/joints/1/rotation_axis = 3
 settings/1/joints/1/limitation = null
 
-[node name="LegRFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="12" unique_id=813118961]
+[node name="LegRFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="14" unique_id=813118961]
 setting_count = 2
 settings/0/target_node = NodePath("../LegRPoleMarker3D")
 settings/1/target_node = NodePath("../LegRMarker3D")
@@ -347,7 +401,32 @@ settings/1/joints/0/limitation = null
 settings/1/joints/1/rotation_axis = 3
 settings/1/joints/1/limitation = null
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="13" unique_id=734666106]
+[node name="SpineFABRIK3D" type="FABRIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="15" unique_id=1482896771]
+setting_count = 2
+settings/0/target_node = NodePath("../SpinePoleMarker3D")
+settings/1/target_node = NodePath("../SpineMarker3D")
+settings/0/root_bone_name = "Spine"
+settings/0/root_bone = 2
+settings/0/end_bone_name = "Spine2"
+settings/0/end_bone = 3
+settings/0/extend_end_bone = false
+settings/0/joint_count = 2
+settings/1/root_bone_name = "Spine2"
+settings/1/root_bone = 3
+settings/1/end_bone_name = "Neck"
+settings/1/end_bone = 4
+settings/1/extend_end_bone = false
+settings/1/joint_count = 2
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/1/joints/0/rotation_axis = 3
+settings/1/joints/0/limitation = null
+settings/1/joints/1/rotation_axis = 3
+settings/1/joints/1/limitation = null
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="16" unique_id=734666106]
 target_node = NodePath("../LookAtMarker3D")
 bone_name = "Head"
 bone = 5
@@ -356,10 +435,10 @@ use_angle_limitation = true
 symmetry_limitation = true
 primary_limit_angle = 1.5707964
 primary_damp_threshold = 1.0
-secondary_limit_angle = 6.2831855
+secondary_limit_angle = 0.7853982
 secondary_damp_threshold = 1.0
 
-[node name="LookAtMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="14" unique_id=1772797483]
+[node name="LookAtMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(729324624) index="17" unique_id=1772797483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.644079, 0.46231097)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1761203023]
