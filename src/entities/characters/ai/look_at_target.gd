@@ -21,4 +21,4 @@ func _on_fov_area_3d_body_entered(body: Node3D) -> void:
 
 func _on_fov_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		get_parent().b_can_see = true
+		get_parent().b_can_see = false

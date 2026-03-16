@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export var nav_agent: NavigationAgent3D
 @export var state_machine: Node
 @export var model: Node3D
+@onready var fov_ray: RayCast3D = $FOVRayCast3D
 
 const SPEED: float = 3.0
 const TURN_SPEED: float = 0.1
@@ -21,7 +22,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		
 	
 	#if b_has_target and player:
 	#	if global_position.distance_to(player.global_position) >= 1.5:
@@ -30,9 +30,13 @@ func _physics_process(delta: float) -> void:
 	#		direction = global_position.direction_to(next_path_pos).normalized()
 	
 	if player:
-		if b_can_hear and not player.b_is_sneaking \
-		or _LOS_player():
+		if _LOS_player() \
+		or b_can_hear and not player.b_is_sneaking:
 			b_has_aggro = true
+		else:
+			b_has_aggro = false
+	else:
+		b_has_aggro = false
 	
 	var direction: Vector3 = Vector3()
 	# Find Path to Target
@@ -58,16 +62,10 @@ func _physics_process(delta: float) -> void:
 
 func _LOS_player() -> bool:
 	if player and b_can_see:
-		var start_pos: Vector3 = global_position
-		start_pos.y += 1.5
 		var end_pos: Vector3 = player.global_position
-		end_pos.y += 1.5
-		var raycast: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(start_pos, end_pos)
-		#raycast.add_exception(self)
-		var collision = get_world_3d().direct_space_state.intersect_ray(raycast)
-		if collision:
-			if collision.collider.is_in_group("Player"):
-				print("I SEE YOU!")
+		fov_ray.target_position = to_local(end_pos)
+		if fov_ray.is_colliding():
+			if fov_ray.get_collider().is_in_group("Player"):
 				b_has_LOS = true
 				return true
 			else:
