@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 @onready var cam_tilt: Node3D = $CameraTilt
 
-
 const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
 const MOUSE_SPEED: float = 0.002
@@ -34,8 +33,8 @@ func _physics_process(delta: float) -> void:
 	#	velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	var input_dir := Input.get_vector("left", "right", "forward", "back")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "back")
+	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED

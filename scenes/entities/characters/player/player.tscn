@@ -5,6 +5,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p2io3"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1124181715 groups=["Player"]]
+floor_constant_speed = true
 floor_max_angle = 1.5707964
 script = ExtResource("1_rptfv")
 
