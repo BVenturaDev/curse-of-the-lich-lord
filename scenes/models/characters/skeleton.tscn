@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5jpjc2mboldd"]
 
 [ext_resource type="PackedScene" uid="uid://c60gj7lbqlusg" path="res://assets/models/characters/skeleton/skeleton.glb" id="1_paiva"]
-[ext_resource type="Script" uid="uid://c65hn73acw110" path="res://src/entities/characters/look_at_target.gd" id="2_0850x"]
+[ext_resource type="Script" uid="uid://c65hn73acw110" path="res://src/entities/characters/ai/look_at_target.gd" id="2_0850x"]
 
 [sub_resource type="Animation" id="Animation_paiva"]
 length = 0.001
@@ -187,7 +187,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_0850x"]
 resource_name = "walk"
-length = 0.8
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -196,7 +196,7 @@ tracks/0/path = NodePath("Armature/Skeleton3D/ArmLPoleMarker3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.25761104, 1.0797995, -0.016191006), Vector3(0.25761104, 1.0797995, -0.16322245), Vector3(0.25761104, 1.0797995, -0.016191006), Vector3(0.256, 1.029, 0.111), Vector3(0.25761104, 1.0797995, -0.016191006)]
@@ -208,7 +208,7 @@ tracks/1/path = NodePath("Armature/Skeleton3D/ArmLMarker3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0009999999, 0.2, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(0.0009999999, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.24439782, 0.74413717, 0.011933476), Vector3(0.24439782, 0.74413717, -0.22454415), Vector3(0.24439782, 0.74413717, 0.011933476), Vector3(0.229, 0.692, 0.227), Vector3(0.24439782, 0.74413717, 0.011933476)]
@@ -220,7 +220,7 @@ tracks/2/path = NodePath("Armature/Skeleton3D/ArmRPoleMarker3D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.0009999999, 0.2, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(0.0009999999, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.25621754, 1.0286293, -0.031154498), Vector3(-0.25621754, 1.0286293, 0.11087273), Vector3(-0.25621754, 1.0286293, -0.031154498), Vector3(-0.258, 1.08, -0.163), Vector3(-0.25621754, 1.0286293, -0.031154498)]
@@ -232,7 +232,7 @@ tracks/3/path = NodePath("Armature/Skeleton3D/ArmRMarker3D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.22939348, 0.6916994, -0.023632675), Vector3(-0.22939348, 0.6916994, 0.22659227), Vector3(-0.22939348, 0.6916994, -0.023632675), Vector3(-0.244, 0.744, -0.225), Vector3(-0.22939348, 0.6916994, -0.023632675)]
@@ -244,7 +244,7 @@ tracks/4/path = NodePath("Armature/Skeleton3D/LegLPoleMarker3D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.0009999999, 0.2, 0.25, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(0.0009999999, 0.1, 0.15, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.1651318, 0.45026693, 0), Vector3(0.1651318, 0.5467097, 0.19852406), Vector3(0.1651318, 0.46236676, 0.11035222), Vector3(0.1651318, 0.45026693, 0), Vector3(0.165, 0.45, -0.157), Vector3(0.1651318, 0.45026693, 0)]
@@ -256,7 +256,7 @@ tracks/5/path = NodePath("Armature/Skeleton3D/LegLMarker3D:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.25, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.1651318, 0.011253327, 0), Vector3(0.1651318, 0.16062242, 0.29989654), Vector3(0.1651318, 0.043358624, 0.17189023), Vector3(0.1651318, 0.011253327, 0), Vector3(0.165, 0.011, -0.309), Vector3(0.1651318, 0.011253327, 0)]
@@ -268,7 +268,7 @@ tracks/6/path = NodePath("Armature/Skeleton3D/LegRPoleMarker3D:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.0009999999, 0.2, 0.4, 0.6, 0.65, 0.8),
+"times": PackedFloat32Array(0.0009999999, 0.1, 0.2, 0.3, 0.34999996, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.165, 0.45, 0), Vector3(-0.165, 0.45, -0.15741362), Vector3(-0.165, 0.45, 0), Vector3(-0.165, 0.547, 0.199), Vector3(-0.165, 0.462, 0.11), Vector3(-0.165, 0.45, 0)]
@@ -280,7 +280,7 @@ tracks/7/path = NodePath("Armature/Skeleton3D/LegRMarker3D:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.65, 0.8),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.34999996, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.165, 0.011, 0), Vector3(-0.165, 0.011, -0.3088811), Vector3(-0.165, 0.011, 0), Vector3(-0.165, 0.161, 0.3), Vector3(-0.165, 0.043, 0.172), Vector3(-0.165, 0.011, 0)]
@@ -469,4 +469,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.644079, 0.46231097)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1761203023]
 libraries/ = SubResource("AnimationLibrary_paiva")
-autoplay = &"idle"
+autoplay = &"walk"

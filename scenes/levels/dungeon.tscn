@@ -2,7 +2,8 @@
 
 [ext_resource type="MeshLibrary" uid="uid://ctc5csj7eu2x5" path="res://mesh_libraries/walls.meshlib" id="1_wail4"]
 [ext_resource type="PackedScene" uid="uid://b4lephsux7gic" path="res://scenes/entities/characters/player/player.tscn" id="2_srduu"]
-[ext_resource type="PackedScene" uid="uid://cguw3pbl6mdcn" path="res://scenes/entities/characters/npc/skeleton.tscn" id="3_s5a2w"]
+[ext_resource type="PackedScene" uid="uid://cguw3pbl6mdcn" path="res://scenes/entities/characters/ai/skeleton.tscn" id="3_s5a2w"]
+[ext_resource type="AudioStream" uid="uid://c1urk40g0h0b0" path="res://assets/music/curse_of_the_lich_lord_concept_1.wav" id="4_yc5ro"]
 
 [sub_resource type="Environment" id="Environment_wail4"]
 ambient_light_source = 2
@@ -62,3 +63,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 
 [node name="Skeleton" parent="." unique_id=1584703577 instance=ExtResource("3_s5a2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7320724, 0.006447906, -15.616191)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=28242943]
+stream = ExtResource("4_yc5ro")
+autoplay = true
