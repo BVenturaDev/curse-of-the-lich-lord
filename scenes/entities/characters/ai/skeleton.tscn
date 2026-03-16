@@ -2,15 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cf5d5hky2yk2w" path="res://src/entities/characters/ai/enemy.gd" id="1_5qvp7"]
 [ext_resource type="PackedScene" uid="uid://5jpjc2mboldd" path="res://scenes/models/characters/skeleton.tscn" id="1_tb6ca"]
+[ext_resource type="PackedScene" uid="uid://cwq0hxh8p031q" path="res://scenes/entities/stateMachine.tscn" id="3_mqjve"]
+[ext_resource type="Script" uid="uid://bmn3uy4qjgmni" path="res://src/entities/characters/ai/states/enemy_idle.gd" id="4_mqjve"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13oou"]
 radius = 0.30517578
 height = 1.8569336
 
-[node name="Skeleton" type="CharacterBody3D" unique_id=1584703577 node_paths=PackedStringArray("nav_agent")]
+[node name="Skeleton" type="CharacterBody3D" unique_id=1584703577 node_paths=PackedStringArray("nav_agent", "state_machine", "model")]
 floor_max_angle = 1.5707964
 script = ExtResource("1_5qvp7")
 nav_agent = NodePath("NavigationAgent3D")
+state_machine = NodePath("StateMachine")
+model = NodePath("skeleton")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=899877823]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9284668, 0)
@@ -20,3 +24,10 @@ shape = SubResource("CapsuleShape3D_13oou")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1584843150]
 path_height_offset = 0.5
+
+[node name="StateMachine" parent="." unique_id=414335859 node_paths=PackedStringArray("init_state") instance=ExtResource("3_mqjve")]
+init_state = NodePath("EnemyIdle")
+
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=1501448983]
+script = ExtResource("4_mqjve")
+metadata/_custom_type_script = "uid://bmn3uy4qjgmni"

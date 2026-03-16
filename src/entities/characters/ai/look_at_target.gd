@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var look_tar: Marker3D
+@export var anim: AnimationPlayer
 
 var start_pos: Vector3 = Vector3()
 
