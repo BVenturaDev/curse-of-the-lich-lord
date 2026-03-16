@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://c60gj7lbqlusg" path="res://assets/models/characters/skeleton/skeleton.glb" id="1_paiva"]
 [ext_resource type="Script" uid="uid://c65hn73acw110" path="res://src/entities/characters/ai/look_at_target.gd" id="2_0850x"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_0850x"]
+radius = 7.0
+
 [sub_resource type="Animation" id="Animation_paiva"]
 length = 0.001
 tracks/0/type = "value"
@@ -540,6 +543,20 @@ secondary_damp_threshold = 1.0
 [node name="LookAtMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(873441102) index="17" unique_id=1772797483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.644079, 0.46231097)
 
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(873441102) index="18" unique_id=624978992]
+transform = Transform3D(1, 7.1054274e-15, -2.3841852e-07, -8.275433e-08, 0.93782926, -0.3470969, 2.235959e-07, 0.34709692, 0.93782914, -4.046017e-15, 1.5681341, -0.049295943)
+bone_name = "Head"
+bone_idx = 5
+
+[node name="FOVArea3D" type="Area3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" unique_id=1013416930]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment3D/FOVArea3D" index="0" unique_id=1025917362]
+transform = Transform3D(1, -1.6940659e-21, 0, -2.5410988e-21, 1, 0, 1.6940659e-21, 1.1920929e-07, 1, -9.386179e-14, 2.4444604, 6.6049366)
+shape = SubResource("SphereShape3D_0850x")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1761203023]
 libraries/ = SubResource("AnimationLibrary_paiva")
 autoplay = &"walk"
+
+[connection signal="body_entered" from="Armature/Skeleton3D/BoneAttachment3D/FOVArea3D" to="." method="_on_fov_area_3d_body_entered"]
+[connection signal="body_exited" from="Armature/Skeleton3D/BoneAttachment3D/FOVArea3D" to="." method="_on_fov_area_3d_body_exited"]
