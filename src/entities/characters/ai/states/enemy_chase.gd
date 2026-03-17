@@ -24,6 +24,6 @@ func Physics_Update(_delta: float) -> void:
 	if character.nav_agent.is_navigation_finished() and character.b_has_target:
 		character.b_has_target = false
 		if character.global_position.distance_to(player.global_position) <= 1.5:
-			print("ATTACK")
+			character.state_machine.on_change_state(character.state_machine.current_state, "EnemyAttack")
 		elif not character.b_has_LOS:
 			character.state_machine.on_change_state(character.state_machine.current_state, "EnemyIdle")

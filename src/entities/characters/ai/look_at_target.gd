@@ -22,3 +22,8 @@ func _on_fov_area_3d_body_entered(body: Node3D) -> void:
 func _on_fov_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		get_parent().b_can_see = false
+
+
+func _on_hand_area_3d_body_entered(body: Node3D) -> void:
+	if get_parent().b_is_attacking and get_parent().b_can_hit and body.is_in_group("Player"):
+		get_parent().hit_player()

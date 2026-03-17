@@ -6,6 +6,9 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_0850x"]
 radius = 7.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_7a3kq"]
+radius = 0.25
+
 [sub_resource type="Animation" id="Animation_paiva"]
 length = 0.001
 tracks/0/type = "value"
@@ -138,6 +141,103 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id="Animation_fds0k"]
 resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/ArmLPoleMarker3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.35, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.25761104, 1.0797995, -0.016191006), Vector3(0.3258101, 1.2340847, 0.1350311), Vector3(0.24298346, 1.2947966, 0.19301538), Vector3(0.24431422, 1.2947967, 0.3095212), Vector3(0.24431422, 1.1581106, 0.3095212), Vector3(0.25761104, 1.0797995, -0.016191006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/ArmLMarker3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.35, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.24439782, 0.74413717, 0.011933476), Vector3(0.3861789, 1.4174889, 0.37783924), Vector3(0.2000635, 1.4174889, 0.5062749), Vector3(0.22750887, 1.4174888, 0.7444992), Vector3(0.22750884, 1.2808027, 0.7444992), Vector3(0.24439782, 0.74413717, 0.011933476)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D/ArmRPoleMarker3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.19999999, 0.25, 0.3, 0.35, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.25621754, 1.0286293, -0.031154498), Vector3(-0.326, 1.234, -0.231), Vector3(-0.43864766, 1.4851642, -0.10310766), Vector3(-0.26740134, 1.5844815, 0.22352879), Vector3(-0.2090848, 1.4276271, 0.33016264), Vector3(-0.20908481, 1.290941, 0.33016264), Vector3(-0.25621754, 1.0286293, -0.031154498)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D/ArmRMarker3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.19999999, 0.25, 0.3, 0.35, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.22939348, 0.6916994, -0.023632675), Vector3(-0.386, 1.417, 0.012), Vector3(-0.42969033, 1.8155979, -0.03458707), Vector3(-0.33038476, 1.8161515, 0.6856591), Vector3(-0.15336151, 1.3558512, 0.6994512), Vector3(-0.1533615, 1.2191651, 0.6994512), Vector3(-0.22939348, 0.6916994, -0.023632675)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D/LegRMarker3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.165, 0.011, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D/LegLPoleMarker3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1651318, 0.45026693, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D/LegLMarker3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1651318, 0.011253327, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D/LegRPoleMarker3D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.165, 0.45, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_7a3kq"]
 resource_name = "idle"
@@ -547,20 +647,31 @@ secondary_damp_threshold = 1.0
 [node name="LookAtMarker3D" type="Marker3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(873441102) index="17" unique_id=1772797483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.644079, 0.46231097)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(873441102) index="18" unique_id=624978992]
+[node name="FOVBoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(873441102) index="18" unique_id=624978992]
 transform = Transform3D(1, 7.1054274e-15, -2.3841852e-07, -8.275433e-08, 0.93782926, -0.3470969, 2.235959e-07, 0.34709692, 0.93782914, -4.046017e-15, 1.5681341, -0.049295943)
 bone_name = "Head"
 bone_idx = 5
 
-[node name="FOVArea3D" type="Area3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" unique_id=1013416930]
+[node name="FOVArea3D" type="Area3D" parent="Armature/Skeleton3D/FOVBoneAttachment3D" index="0" unique_id=1013416930]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment3D/FOVArea3D" index="0" unique_id=1025917362]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/FOVBoneAttachment3D/FOVArea3D" index="0" unique_id=1025917362]
 transform = Transform3D(1, -1.6940659e-21, 0, -2.5410988e-21, 1, 0, 1.6940659e-21, 1.1920929e-07, 1, -9.386179e-14, 2.4444604, 6.6049366)
 shape = SubResource("SphereShape3D_0850x")
+
+[node name="HandBoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(873441102) index="19" unique_id=2024589535]
+transform = Transform3D(-0.3300345, -0.6743805, 0.66052157, 0.9353153, -0.32814702, 0.13230552, 0.12752384, 0.6614613, 0.73905796, -0.70428807, 1.2738271, 0.33370206)
+bone_name = "Hand_r"
+bone_idx = 13
+
+[node name="HandArea3D" type="Area3D" parent="Armature/Skeleton3D/HandBoneAttachment3D" index="0" unique_id=567372538]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/HandBoneAttachment3D/HandArea3D" index="0" unique_id=2077186360]
+shape = SubResource("SphereShape3D_7a3kq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1761203023]
 libraries/ = SubResource("AnimationLibrary_paiva")
 autoplay = &"walk"
 
-[connection signal="body_entered" from="Armature/Skeleton3D/BoneAttachment3D/FOVArea3D" to="." method="_on_fov_area_3d_body_entered"]
-[connection signal="body_exited" from="Armature/Skeleton3D/BoneAttachment3D/FOVArea3D" to="." method="_on_fov_area_3d_body_exited"]
+[connection signal="body_entered" from="Armature/Skeleton3D/FOVBoneAttachment3D/FOVArea3D" to="." method="_on_fov_area_3d_body_entered"]
+[connection signal="body_exited" from="Armature/Skeleton3D/FOVBoneAttachment3D/FOVArea3D" to="." method="_on_fov_area_3d_body_exited"]
+[connection signal="body_entered" from="Armature/Skeleton3D/HandBoneAttachment3D/HandArea3D" to="." method="_on_hand_area_3d_body_entered"]

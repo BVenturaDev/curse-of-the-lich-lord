@@ -8,6 +8,7 @@ const JUMP_VELOCITY: float = 4.5
 const MOUSE_SPEED: float = 0.002
 
 var b_is_sneaking: bool = false
+var b_is_moving: bool = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -56,5 +57,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	if velocity.x == 0 and velocity.z == 0:
+		b_is_moving = false
+	else:
+		b_is_moving = true
 
 	move_and_slide()

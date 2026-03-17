@@ -8,15 +8,23 @@ extends CharacterBody3D
 const SPEED: float = 3.0
 const TURN_SPEED: float = 0.1
 
+var attack_timer: Timer = Timer.new()
+
 var player: CharacterBody3D
 var b_has_aggro: bool = false
 var b_has_target: bool = false
 var b_can_hear: bool = false
 var b_can_see: bool = false
 var b_has_LOS: bool = false
+var b_is_attacking: bool = false
+var b_can_attack: bool = true
+var b_can_hit: bool = true
 
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("Player")[0]
+	add_child(attack_timer)
+	attack_timer.wait_time = 1.0
+	attack_timer.timeout.connect(_on_attack_timeout)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -31,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	
 	if player:
 		if _LOS_player() \
-		or b_can_hear and not player.b_is_sneaking:
+		or (b_can_hear and not player.b_is_sneaking and not player.b_is_moving):
 			b_has_aggro = true
 			if state_machine.get_current_state() == "EnemyIdle":
 				state_machine.on_change_state(state_machine.current_state, "EnemyChase")
@@ -44,10 +52,15 @@ func _physics_process(delta: float) -> void:
 	# Find Path to Target
 	if b_has_target:
 		var next_path_pos: Vector3 = nav_agent.get_next_path_position()
-		print(next_path_pos)
 		direction = global_position.direction_to(next_path_pos).normalized()
+		
 		# Turn Towards Nav Goal
-		var tar_rot: float = direction.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
+		var tar_rot: float = 0.0
+		if b_is_attacking:
+			var player_dir: Vector3 = global_position.direction_to(player.global_position).normalized()
+			tar_rot = player_dir.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
+		else:
+			tar_rot = direction.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
 		rotation.y = lerp_angle(rotation.y, tar_rot, TURN_SPEED)
 		
 	# Move towards Current Nav Goal
@@ -58,10 +71,22 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		if model:
+		if model and not b_is_attacking:
 			model.anim.play("idle", 1.0)
 	
 	move_and_slide()
+
+func attack() -> void:
+	if b_can_attack:
+		b_is_attacking = true
+		b_can_attack = false
+		b_can_hit = true
+		model.anim.play("attack")
+		attack_timer.start()
+		
+func hit_player() -> void:
+	b_can_hit = false
+	print("HIT")
 
 func _LOS_player() -> bool:
 	if player and b_can_see:
@@ -88,3 +113,6 @@ func _on_listen_area_3d_body_entered(body: Node3D) -> void:
 func _on_listen_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		b_can_hear = false
+
+func _on_attack_timeout() -> void:
+	b_can_attack = true
