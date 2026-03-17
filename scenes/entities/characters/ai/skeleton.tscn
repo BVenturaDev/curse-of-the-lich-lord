@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://5jpjc2mboldd" path="res://scenes/models/characters/skeleton.tscn" id="1_tb6ca"]
 [ext_resource type="PackedScene" uid="uid://cwq0hxh8p031q" path="res://scenes/entities/stateMachine.tscn" id="3_mqjve"]
 [ext_resource type="Script" uid="uid://bmn3uy4qjgmni" path="res://src/entities/characters/ai/states/enemy_idle.gd" id="4_mqjve"]
+[ext_resource type="Script" uid="uid://dfngf4qorgris" path="res://src/entities/characters/ai/states/enemy_chase.gd" id="5_o7px5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13oou"]
 radius = 0.30517578
@@ -27,6 +28,7 @@ shape = SubResource("CapsuleShape3D_13oou")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1584843150]
 path_height_offset = 0.5
+debug_enabled = true
 
 [node name="StateMachine" parent="." unique_id=414335859 node_paths=PackedStringArray("init_state") instance=ExtResource("3_mqjve")]
 init_state = NodePath("EnemyIdle")
@@ -34,6 +36,10 @@ init_state = NodePath("EnemyIdle")
 [node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=1501448983]
 script = ExtResource("4_mqjve")
 metadata/_custom_type_script = "uid://bmn3uy4qjgmni"
+
+[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=1784317289]
+script = ExtResource("5_o7px5")
+metadata/_custom_type_script = "uid://dfngf4qorgris"
 
 [node name="ListenArea3D" type="Area3D" parent="." unique_id=1737613791]
 

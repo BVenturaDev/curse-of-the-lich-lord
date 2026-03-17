@@ -34,3 +34,6 @@ func on_change_state(state: State, new_state_name: String) -> void:
 	
 	new_state.Enter()
 	current_state = new_state
+
+func get_current_state() -> String:
+	return current_state.name

@@ -33,6 +33,8 @@ func _physics_process(delta: float) -> void:
 		if _LOS_player() \
 		or b_can_hear and not player.b_is_sneaking:
 			b_has_aggro = true
+			if state_machine.get_current_state() == "EnemyIdle":
+				state_machine.on_change_state(state_machine.current_state, "EnemyChase")
 		else:
 			b_has_aggro = false
 	else:
@@ -42,6 +44,7 @@ func _physics_process(delta: float) -> void:
 	# Find Path to Target
 	if b_has_target:
 		var next_path_pos: Vector3 = nav_agent.get_next_path_position()
+		print(next_path_pos)
 		direction = global_position.direction_to(next_path_pos).normalized()
 		# Turn Towards Nav Goal
 		var tar_rot: float = direction.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)

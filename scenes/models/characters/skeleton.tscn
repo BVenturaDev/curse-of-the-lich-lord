@@ -136,6 +136,9 @@ tracks/10/keys = {
 "values": [Vector3(0, 1.181026, -0.076353684)]
 }
 
+[sub_resource type="Animation" id="Animation_fds0k"]
+resource_name = "attack"
+
 [sub_resource type="Animation" id="Animation_7a3kq"]
 resource_name = "idle"
 length = 0.1
@@ -364,6 +367,7 @@ tracks/7/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_paiva"]
 _data = {
 &"RESET": SubResource("Animation_paiva"),
+&"attack": SubResource("Animation_fds0k"),
 &"idle": SubResource("Animation_7a3kq"),
 &"walk": SubResource("Animation_0850x")
 }
