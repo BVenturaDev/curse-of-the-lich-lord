@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	
 	if player:
 		if _LOS_player() \
-		or (b_can_hear and not player.b_is_sneaking and not player.b_is_moving):
+		or (b_can_hear and not player.b_is_sneaking and player.b_is_moving):
 			b_has_aggro = true
 			if state_machine.get_current_state() == "EnemyIdle":
 				state_machine.on_change_state(state_machine.current_state, "EnemyChase")

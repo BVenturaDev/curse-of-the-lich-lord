@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://v4vpj8u675a2"]
+
+[ext_resource type="PackedScene" uid="uid://b8txlb1xgfgh8" path="res://assets/models/props/LifeShard.glb" id="1_ly4cv"]
+[ext_resource type="Script" uid="uid://cj7qwlml28hn0" path="res://src/entities/life_shard.gd" id="2_7iqc1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ly4cv"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_7iqc1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LifeShard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LifeShard:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0ic76"]
+resource_name = "spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LifeShard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 1.25, 0), Vector3(0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LifeShard:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_in03h"]
+_data = {
+&"RESET": SubResource("Animation_7iqc1"),
+&"spin": SubResource("Animation_0ic76")
+}
+
+[node name="LifeShard" unique_id=530841639 instance=ExtResource("1_ly4cv")]
+script = ExtResource("2_7iqc1")
+
+[node name="LifeShard" parent="." index="0" unique_id=428351749]
+transform = Transform3D(0.10906457, 0, 0, 0, 0.10906457, 0, 0, 0, 0.10906457, 0, 1, 0)
+
+[node name="Area3D" type="Area3D" parent="LifeShard" index="0" unique_id=413153676]
+transform = Transform3D(9.16888, 0, 0, 0, 9.16888, 0, 0, 0, 9.16888, 0, 2.7747834, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LifeShard/Area3D" index="0" unique_id=369852495]
+shape = SubResource("SphereShape3D_ly4cv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1179139956]
+libraries/ = SubResource("AnimationLibrary_in03h")
+autoplay = &"spin"
+
+[connection signal="body_entered" from="LifeShard/Area3D" to="." method="_on_area_3d_body_entered"]
