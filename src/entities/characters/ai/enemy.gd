@@ -7,6 +7,7 @@ extends CharacterBody3D
 
 const SPEED: float = 3.0
 const TURN_SPEED: float = 0.1
+const ATTACK_DAMAGE: int = 2
 
 var attack_timer: Timer = Timer.new()
 
@@ -19,6 +20,7 @@ var b_has_LOS: bool = false
 var b_is_attacking: bool = false
 var b_can_attack: bool = true
 var b_can_hit: bool = true
+var health: int = 8
 
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("Player")[0]
@@ -30,12 +32,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
-	#if b_has_target and player:
-	#	if global_position.distance_to(player.global_position) >= 1.5:
-	#		nav_agent.target_position = player.global_position
-	#		var next_path_pos: Vector3 = nav_agent.get_next_path_position()
-	#		direction = global_position.direction_to(next_path_pos).normalized()
 	
 	if player:
 		if _LOS_player() \
@@ -76,6 +72,14 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+func take_damage(damage_amount: int) -> void:
+	if b_has_aggro:
+		health -= damage_amount
+	else:
+		health -= damage_amount * 4
+	if health <= 0:
+		print("Skeleton Dead")
+
 func attack() -> void:
 	if b_can_attack:
 		b_is_attacking = true
@@ -86,7 +90,8 @@ func attack() -> void:
 		
 func hit_player() -> void:
 	b_can_hit = false
-	print("HIT")
+	if player:
+		player.get_node("HealthComponent").on_take_damage(ATTACK_DAMAGE)
 
 func _LOS_player() -> bool:
 	if player and b_can_see:

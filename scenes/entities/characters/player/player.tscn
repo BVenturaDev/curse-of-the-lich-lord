@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b4lephsux7gic"]
 
 [ext_resource type="Script" uid="uid://d2jpv0fn8cfna" path="res://src/entities/characters/player/player.gd" id="1_rptfv"]
+[ext_resource type="PackedScene" uid="uid://c53msq5ln1oe0" path="res://scenes/ui/healthbar.tscn" id="2_uatu6"]
+[ext_resource type="Script" uid="uid://d0i1fxbu676v0" path="res://src/components/health_component.gd" id="3_620ub"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p2io3"]
 
@@ -18,3 +20,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraTilt" unique_id=733473228]
 current = true
+
+[node name="Healthbar" parent="." unique_id=1447273698 instance=ExtResource("2_uatu6")]
+
+[node name="HealthComponent" type="Node" parent="." unique_id=2079560868 node_paths=PackedStringArray("healthbar")]
+script = ExtResource("3_620ub")
+healthbar = NodePath("../Healthbar")
+metadata/_custom_type_script = "uid://d0i1fxbu676v0"

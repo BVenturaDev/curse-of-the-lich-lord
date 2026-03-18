@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c53msq5ln1oe0"]
+
+[ext_resource type="Script" uid="uid://xejw2x2lfj0v" path="res://src/ui/healthbar.gd" id="1_kl70x"]
+
+[node name="Healthbar" type="Control" unique_id=342654189]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_kl70x")
+metadata/_custom_type_script = "uid://xejw2x2lfj0v"
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=1096452883]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 345.0
+offset_bottom = 57.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer" unique_id=601078807]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 32
