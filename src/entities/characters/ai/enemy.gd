@@ -76,12 +76,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func take_damage(damage_amount: int) -> void:
-	if b_has_aggro:
-		health -= damage_amount
-	else:
-		health -= damage_amount * 4
-	if health <= 0:
-		state_machine.on_change_state(state_machine.current_state, "EnemyDead")
+	if state_machine.get_current_state() != "EnemyDead":
+		if b_has_aggro:
+			health -= damage_amount
+		else:
+			health -= damage_amount * 4
+		if health <= 0:
+			state_machine.on_change_state(state_machine.current_state, "EnemyDead")
 
 func attack() -> void:
 	if b_can_attack:

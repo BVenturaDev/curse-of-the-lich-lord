@@ -14,11 +14,11 @@ func set_max_health(max_health: int) -> void:
 		h_box.add_child(new_shard)
 
 func set_health(missing_health: int) -> void:
+	for life_shard in h_box.get_children():
+			life_shard.set_health(4)
 	if missing_health > 0:
 		var dead_shards: int = int(missing_health / 4)
 		var remaining_shards: int = missing_health % 4
-		for life_shard in h_box.get_children():
-			life_shard.set_health(4)
 		for i in range(h_box.get_child_count() - 1, -1, -1):
 			if dead_shards > 0:
 				dead_shards -= 1
@@ -27,4 +27,3 @@ func set_health(missing_health: int) -> void:
 				h_box.get_child(i).set_health(4 - remaining_shards)
 				remaining_shards = 0
 				return
-			

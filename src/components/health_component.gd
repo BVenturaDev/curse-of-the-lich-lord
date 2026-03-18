@@ -34,6 +34,7 @@ func on_add_health(health_amount: int) -> void:
 		max_health = 40
 	if current_health + health_amount > 40:
 		current_health = 40
+	print(current_health)
 	healthbar.set_max_health(max_health)
 	healthbar.set_health(max_health - current_health)
 
