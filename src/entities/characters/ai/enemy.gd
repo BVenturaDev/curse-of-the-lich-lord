@@ -29,6 +29,9 @@ func _ready() -> void:
 	attack_timer.timeout.connect(_on_attack_timeout)
 
 func _physics_process(delta: float) -> void:
+	if state_machine.get_current_state() == "EnemyDead":
+		return
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -78,7 +81,7 @@ func take_damage(damage_amount: int) -> void:
 	else:
 		health -= damage_amount * 4
 	if health <= 0:
-		print("Skeleton Dead")
+		state_machine.on_change_state(state_machine.current_state, "EnemyDead")
 
 func attack() -> void:
 	if b_can_attack:

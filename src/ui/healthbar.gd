@@ -5,8 +5,6 @@ class_name Healthbar
 
 const life_shard_scene = preload("res://scenes/ui/life_shard_gui.tscn")
 
-
-
 func set_max_health(max_health: int) -> void:
 	var shards: int = int(max_health / 4)
 	if max_health % 4 > 0:

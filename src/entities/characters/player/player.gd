@@ -1,14 +1,19 @@
 extends CharacterBody3D
 
 @onready var cam_tilt: Node3D = $CameraTilt
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var attack_area: Area3D = $CameraTilt/Sword/AttackArea3D
 
 const SPEED: float = 5.0
 const SNEAK_SPEED: float = 2.5
 const JUMP_VELOCITY: float = 4.5
 const MOUSE_SPEED: float = 0.002
 
+var attack_damage: int = 2
 var b_is_sneaking: bool = false
 var b_is_moving: bool = false
+var b_attacking: bool = false
+var b_can_hit: bool = true
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -25,6 +30,18 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		
+	if Input.is_action_just_pressed("attack") and not b_attacking:
+		anim.play("attack")
+		b_attacking = true
+		b_can_hit = true
+	elif b_attacking and b_can_hit and attack_area.has_overlapping_bodies():
+		var bodies: Array = attack_area.get_overlapping_bodies()
+		for body in bodies:
+			if body.is_in_group("Enemy"):
+				b_can_hit = false
+				body.take_damage(attack_damage)
+		
 	
 	if Input.is_action_just_pressed("sneak"):
 		if b_is_sneaking:
@@ -64,3 +81,8 @@ func _physics_process(delta: float) -> void:
 		b_is_moving = true
 
 	move_and_slide()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "attack":
+		b_attacking = false
