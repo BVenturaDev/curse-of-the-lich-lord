@@ -2,6 +2,7 @@ extends Node
 
 var death_positions: Array = []
 var death_health: Array = []
+var open_levers: Array = []
 
 func reset_game(player: CharacterBody3D):
 	death_positions.append(player.global_position)

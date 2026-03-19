@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c1urk40g0h0b0" path="res://assets/music/curse_of_the_lich_lord_concept_1.wav" id="4_yc5ro"]
 [ext_resource type="PackedScene" uid="uid://v4vpj8u675a2" path="res://scenes/entities/life_shard.tscn" id="5_7f72c"]
 [ext_resource type="PackedScene" uid="uid://b4d28e4yjld36" path="res://scenes/interact/gate.tscn" id="6_w0mg0"]
+[ext_resource type="Script" uid="uid://corbbvmra6wf1" path="res://src/util/levers.gd" id="8_q0ye3"]
 [ext_resource type="PackedScene" uid="uid://bijybm074r4xc" path="res://scenes/interact/lever.tscn" id="8_wyxho"]
 
 [sub_resource type="Environment" id="Environment_wail4"]
@@ -81,6 +82,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5264864, 0, 0.19826865)
 [node name="Gate" parent="." unique_id=1867498886 instance=ExtResource("6_w0mg0")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.75, 0, 3)
 
-[node name="Lever" parent="." unique_id=1374411085 node_paths=PackedStringArray("gate") instance=ExtResource("8_wyxho")]
+[node name="Levers" type="Node3D" parent="." unique_id=133290562]
+script = ExtResource("8_q0ye3")
+
+[node name="Lever" parent="Levers" unique_id=1374411085 node_paths=PackedStringArray("gate") instance=ExtResource("8_wyxho")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4, 0, -20.25)
-gate = NodePath("../Gate")
+gate = NodePath("../../Gate")

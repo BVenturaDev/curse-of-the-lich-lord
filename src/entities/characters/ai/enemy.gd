@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var state_machine: Node
 @export var model: Node3D
 @onready var fov_ray: RayCast3D = $FOVRayCast3D
+@onready var death_light: OmniLight3D = $DeathOmniLight3D
 
 const SPEED: float = 3.0
 const TURN_SPEED: float = 0.1
