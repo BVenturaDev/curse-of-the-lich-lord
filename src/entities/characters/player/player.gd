@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var interact_cast: RayCast3D = $CameraTilt/InteractRayCast3D
 @onready var interact_text: Control = $InteractText
 @onready var death_screen: Control = $DeathScreen
+@onready var win_screen: Control = $WinScreen
 @onready var health_component: HealthComponent = $HealthComponent
 
 const SPEED: float = 5.0
@@ -103,6 +104,11 @@ func _physics_process(delta: float) -> void:
 		b_is_moving = true
 
 	move_and_slide()
+
+func victory() -> void:
+	win_screen.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().paused = true
 
 func _can_interact() -> bool:
 	if interact_cast.is_colliding():

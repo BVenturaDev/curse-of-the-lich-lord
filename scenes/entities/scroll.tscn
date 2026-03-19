@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dosf0t1jeq5qa"]
+
+[ext_resource type="PackedScene" uid="uid://bffc6off1fe06" path="res://assets/models/props/Scroll.glb" id="1_m20e8"]
+[ext_resource type="Script" uid="uid://og4uk1xdurqp" path="res://src/entities/scroll.gd" id="2_fmdbu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m20e8"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_m20e8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scroll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scroll:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fmdbu"]
+resource_name = "spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scroll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 0.75, 0), Vector3(0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scroll:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x65h2"]
+_data = {
+&"RESET": SubResource("Animation_m20e8"),
+&"spin": SubResource("Animation_fmdbu")
+}
+
+[node name="Scroll" unique_id=1488315199 instance=ExtResource("1_m20e8")]
+script = ExtResource("2_fmdbu")
+
+[node name="Scroll" parent="." index="0" unique_id=1334944051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Area3D" type="Area3D" parent="Scroll" index="0" unique_id=746976815]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scroll/Area3D" index="0" unique_id=1993994967]
+shape = SubResource("SphereShape3D_m20e8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1843835010]
+libraries/ = SubResource("AnimationLibrary_x65h2")
+autoplay = &"spin"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2" unique_id=2020623834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.25)
+light_color = Color(0.9813172, 0.7701241, 0.6595689, 1)
+
+[connection signal="body_entered" from="Scroll/Area3D" to="." method="_on_area_3d_body_entered"]

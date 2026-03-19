@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b4d28e4yjld36" path="res://scenes/interact/gate.tscn" id="6_w0mg0"]
 [ext_resource type="Script" uid="uid://corbbvmra6wf1" path="res://src/util/levers.gd" id="8_q0ye3"]
 [ext_resource type="PackedScene" uid="uid://bijybm074r4xc" path="res://scenes/interact/lever.tscn" id="8_wyxho"]
+[ext_resource type="PackedScene" uid="uid://dosf0t1jeq5qa" path="res://scenes/entities/scroll.tscn" id="10_06kf8"]
 
 [sub_resource type="Environment" id="Environment_wail4"]
 ambient_light_source = 2
@@ -73,6 +74,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7320724, 0.006447906, -15.616191)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=28242943]
+process_mode = 3
 stream = ExtResource("4_yc5ro")
 autoplay = true
 
@@ -88,3 +90,6 @@ script = ExtResource("8_q0ye3")
 [node name="Lever" parent="Levers" unique_id=1374411085 node_paths=PackedStringArray("gate") instance=ExtResource("8_wyxho")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4, 0, -20.25)
 gate = NodePath("../../Gate")
+
+[node name="Scroll" parent="." unique_id=1488315199 instance=ExtResource("10_06kf8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.75, -8.5, 16)
