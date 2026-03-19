@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bijybm074r4xc"]
+
+[ext_resource type="PackedScene" uid="uid://dn5jkje2lu5n2" path="res://assets/models/props/Lever.glb" id="1_gvvwi"]
+[ext_resource type="Script" uid="uid://ubd8pp0s1uv3" path="res://src/interact/lever.gd" id="2_kccgs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gvvwi"]
+size = Vector3(0.14718716, 0.4125569, 0.20627838)
+
+[sub_resource type="Animation" id="Animation_gvvwi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lever:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.7853982, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kccgs"]
+resource_name = "pressed"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lever:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.7853982, 0, 0), Vector3(0.7853982, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_evof0"]
+resource_name = "start"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lever:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.7853982, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uf500"]
+_data = {
+&"RESET": SubResource("Animation_gvvwi"),
+&"pressed": SubResource("Animation_kccgs"),
+&"start": SubResource("Animation_evof0")
+}
+
+[node name="Lever" unique_id=1374411085 groups=["Interact"] instance=ExtResource("1_gvvwi")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("2_kccgs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="lever_base" parent_id_path=PackedInt32Array(1336881250) index="0" unique_id=1642064391]
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lever_base/StaticBody3D" index="0" unique_id=1041291677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, -0.3968608)
+shape = SubResource("BoxShape3D_gvvwi")
+
+[node name="lever" parent="." index="1" unique_id=1618740072]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 1, -0.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=165631667]
+libraries/ = SubResource("AnimationLibrary_uf500")
+autoplay = &"start"

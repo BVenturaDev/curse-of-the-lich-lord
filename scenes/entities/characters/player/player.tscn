@@ -99,6 +99,10 @@ transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, 0
 transform = Transform3D(1, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 1, 0, 0.7689825, 0)
 shape = SubResource("BoxShape3D_nrr0s")
 
+[node name="InteractRayCast3D" type="RayCast3D" parent="CameraTilt" unique_id=725563457]
+target_position = Vector3(0, 0, -1)
+collision_mask = 16
+
 [node name="Healthbar" parent="." unique_id=1447273698 instance=ExtResource("2_uatu6")]
 
 [node name="HealthComponent" type="Node" parent="." unique_id=2079560868 node_paths=PackedStringArray("healthbar")]
@@ -108,6 +112,30 @@ metadata/_custom_type_script = "uid://d0i1fxbu676v0"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=486524136]
 libraries/ = SubResource("AnimationLibrary_r0tm6")
+
+[node name="InteractText" type="Control" parent="." unique_id=1363535853]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 50.0
+offset_right = 20.0
+offset_bottom = 90.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="InteractText" unique_id=334845798]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.5
+offset_right = 70.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Press E to Interact"
+horizontal_alignment = 1
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 

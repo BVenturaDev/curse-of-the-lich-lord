@@ -3,6 +3,8 @@ extends CharacterBody3D
 @onready var cam_tilt: Node3D = $CameraTilt
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var attack_area: Area3D = $CameraTilt/Sword/AttackArea3D
+@onready var interact_cast: RayCast3D = $CameraTilt/InteractRayCast3D
+@onready var interact_text: Control = $InteractText
 
 const SPEED: float = 5.0
 const SNEAK_SPEED: float = 2.5
@@ -27,6 +29,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		cam_tilt.rotation.z = 0.0
 
 func _physics_process(delta: float) -> void:
+	if _can_interact():
+		interact_text.visible = true
+	else:
+		interact_text.visible = false
+	
+	if Input.is_action_pressed("interact"):
+		_interact_cast()
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -82,6 +92,18 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _can_interact() -> bool:
+	if interact_cast.is_colliding():
+		var body: Node3D = interact_cast.get_collider().get_parent().get_parent()
+		if not body.b_pressed:
+			return true
+	return false
+
+func _interact_cast() -> void:
+	if interact_cast.is_colliding():
+		var body: Node3D = interact_cast.get_collider().get_parent().get_parent()
+		if body.is_in_group("Interact"):
+			body.interact()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "attack":
