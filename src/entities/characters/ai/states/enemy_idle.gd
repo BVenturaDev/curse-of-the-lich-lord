@@ -7,6 +7,7 @@ var b_has_target = false
 
 func _ready() -> void:
 	character = get_parent().get_parent()
+	timer.one_shot = true
 	add_child(timer)
 	timer.timeout.connect(_on_timeout)
 

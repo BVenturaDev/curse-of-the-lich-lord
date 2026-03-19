@@ -25,6 +25,7 @@ var health: int = 8
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("Player")[0]
 	add_child(attack_timer)
+	attack_timer.one_shot = true
 	attack_timer.wait_time = 1.0
 	attack_timer.timeout.connect(_on_attack_timeout)
 
