@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	if player:
+	if player and not player.b_dead:
 		if _LOS_player() \
 		or (b_can_hear and not player.b_is_sneaking and player.b_is_moving):
 			b_has_aggro = true
@@ -96,7 +96,7 @@ func attack() -> void:
 func hit_player() -> void:
 	b_can_hit = false
 	if player:
-		player.get_node("HealthComponent").on_take_damage(ATTACK_DAMAGE)
+		player.health_component.on_take_damage(ATTACK_DAMAGE)
 
 func _LOS_player() -> bool:
 	if player and b_can_see:

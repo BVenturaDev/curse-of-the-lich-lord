@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bfbc61ssu5vyg"]
 
 [ext_resource type="MeshLibrary" uid="uid://ctc5csj7eu2x5" path="res://mesh_libraries/walls.meshlib" id="1_wail4"]
+[ext_resource type="Script" uid="uid://bi1gokbpb2unj" path="res://src/util/dungeon.gd" id="1_wyxho"]
 [ext_resource type="PackedScene" uid="uid://b4lephsux7gic" path="res://scenes/entities/characters/player/player.tscn" id="2_srduu"]
 [ext_resource type="PackedScene" uid="uid://cguw3pbl6mdcn" path="res://scenes/entities/characters/ai/skeleton.tscn" id="3_s5a2w"]
 [ext_resource type="AudioStream" uid="uid://c1urk40g0h0b0" path="res://assets/music/curse_of_the_lich_lord_concept_1.wav" id="4_yc5ro"]
@@ -32,6 +33,7 @@ agent_radius = 1.0
 agent_max_climb = 0.5
 
 [node name="Dungeon" type="Node3D" unique_id=2085671741]
+script = ExtResource("1_wyxho")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1657535701]
 environment = SubResource("Environment_wail4")

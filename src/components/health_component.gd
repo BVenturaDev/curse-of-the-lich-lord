@@ -21,11 +21,12 @@ func _ready() -> void:
 	rot_timer.start()
 	
 func on_take_damage(dmg_amount: int) -> void:
-	current_health -= dmg_amount
-	if current_health <= 0:
-		current_health = 0
-		print("You Dead Homie")
-	healthbar.set_health(max_health - current_health)
+	if not get_parent().b_dead:
+		current_health -= dmg_amount
+		if current_health <= 0:
+			current_health = 0
+			get_parent().b_dead = true
+		healthbar.set_health(max_health - current_health)
 
 func on_add_health(health_amount: int) -> void:
 	current_health += health_amount

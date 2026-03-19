@@ -5,6 +5,8 @@ extends CharacterBody3D
 @onready var attack_area: Area3D = $CameraTilt/Sword/AttackArea3D
 @onready var interact_cast: RayCast3D = $CameraTilt/InteractRayCast3D
 @onready var interact_text: Control = $InteractText
+@onready var death_screen: Control = $DeathScreen
+@onready var health_component: HealthComponent = $HealthComponent
 
 const SPEED: float = 5.0
 const SNEAK_SPEED: float = 2.5
@@ -16,6 +18,7 @@ var b_is_sneaking: bool = false
 var b_is_moving: bool = false
 var b_attacking: bool = false
 var b_can_hit: bool = true
+var b_dead: bool = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -29,6 +32,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		cam_tilt.rotation.z = 0.0
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	if b_dead:
+		velocity = Vector3()
+		move_and_slide()
+		death_screen.visible = true
+		interact_text.visible = false
+		if Input.is_action_pressed("ui_accept"):
+			Gamestate.reset_game(self)
+		return
+		
 	if _can_interact():
 		interact_text.visible = true
 	else:
@@ -60,12 +78,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			b_is_sneaking = true
 			cam_tilt.position.y = 1.0
-	
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	# Handle jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():

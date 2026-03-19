@@ -9,7 +9,7 @@ func _ready():
 	player = get_tree().get_nodes_in_group("Player")[0]
 
 func Physics_Update(_delta: float) -> void:
-	if character:
+	if character and not player.b_dead:
 		if character.global_position.distance_to(player.global_position) <= 1.5:
 			character.state_machine.on_change_state(character.state_machine.current_state, "EnemyIdle")
 		if character.b_is_attacking:
@@ -17,3 +17,5 @@ func Physics_Update(_delta: float) -> void:
 				character.attack()
 		else:
 			character.attack()
+	else:
+		character.state_machine.on_change_state(character.state_machine.current_state, "EnemyIdle")
