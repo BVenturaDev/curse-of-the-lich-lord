@@ -2,12 +2,12 @@ extends Node
 class_name HealthComponent
 
 @export var healthbar: Healthbar
-@export var default_health: int = 12
+@export var default_health: int = 8
 
 var current_health: int
 var max_health: int
 
-const ROT_TIME: float = 30.0
+const ROT_TIME: float = 10.0
 
 var rot_timer: Timer = Timer.new()
 
@@ -39,5 +39,6 @@ func on_add_health(health_amount: int) -> void:
 	healthbar.set_health(max_health - current_health)
 
 func _on_rot_timeout():
-	on_take_damage(1)
-	rot_timer.start()
+	if get_parent().b_started:
+		on_take_damage(1)
+		rot_timer.start()

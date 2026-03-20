@@ -12,5 +12,7 @@ func _ready() -> void:
 		new_skele.global_position = Gamestate.death_positions[i]
 		new_skele.health = Gamestate.death_health[i]
 		new_skele.death_light.visible = true
+		new_skele.spawn_id = i
 	for i in range(0, Gamestate.open_levers.size()):
 		levers.get_child(i).interact()
+	

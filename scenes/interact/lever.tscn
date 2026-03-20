@@ -73,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, -0.3968608)
 shape = SubResource("BoxShape3D_gvvwi")
 
 [node name="lever" parent="." index="1" unique_id=1618740072]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 1, -0.5)
+transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 1, -0.5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=165631667]
 libraries/ = SubResource("AnimationLibrary_uf500")

@@ -8,6 +8,7 @@ extends CharacterBody3D
 @onready var death_screen: Control = $DeathScreen
 @onready var win_screen: Control = $WinScreen
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var start_screen: Control = $StartScreen
 
 const SPEED: float = 5.0
 const SNEAK_SPEED: float = 2.5
@@ -20,6 +21,7 @@ var b_is_moving: bool = false
 var b_attacking: bool = false
 var b_can_hit: bool = true
 var b_dead: bool = false
+var b_started: bool = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -38,7 +40,14 @@ func _physics_process(delta: float) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			
+	if Input.is_action_pressed("ui_accept"):
+		start_screen.visible = false
+		b_started = true
 	
+	if not b_started:
+		return
+		
 	if b_dead:
 		velocity = Vector3()
 		move_and_slide()
@@ -70,6 +79,8 @@ func _physics_process(delta: float) -> void:
 			if body.is_in_group("Enemy"):
 				b_can_hit = false
 				body.take_damage(attack_damage)
+				b_is_sneaking = false
+				cam_tilt.position.y = 1.5
 		
 	
 	if Input.is_action_just_pressed("sneak"):

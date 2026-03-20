@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name enemy
 
 @export var nav_agent: NavigationAgent3D
 @export var state_machine: Node
@@ -7,6 +8,7 @@ extends CharacterBody3D
 @onready var death_light: OmniLight3D = $DeathOmniLight3D
 
 const SPEED: float = 3.0
+const ATTACK_SPEED: float = 5.5
 const TURN_SPEED: float = 0.1
 const ATTACK_DAMAGE: int = 2
 
@@ -22,6 +24,7 @@ var b_is_attacking: bool = false
 var b_can_attack: bool = true
 var b_can_hit: bool = true
 var health: int = 8
+var spawn_id: int = -1
 
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("Player")[0]
@@ -29,7 +32,7 @@ func _ready() -> void:
 	attack_timer.one_shot = true
 	attack_timer.wait_time = 1.0
 	attack_timer.timeout.connect(_on_attack_timeout)
-
+	
 func _physics_process(delta: float) -> void:
 	if state_machine.get_current_state() == "EnemyDead":
 		return
@@ -66,12 +69,19 @@ func _physics_process(delta: float) -> void:
 		
 	# Move towards Current Nav Goal
 	if direction:
-		velocity = direction * SPEED
+		if b_has_aggro:
+			velocity = direction * ATTACK_SPEED
+		else:
+			velocity = direction * SPEED
 		if model:
 			model.anim.play("walk", 1.0)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		if b_has_aggro:
+			velocity.x = move_toward(velocity.x, 0, ATTACK_SPEED)
+			velocity.z = move_toward(velocity.z, 0, ATTACK_SPEED)
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 		if model and not b_is_attacking:
 			model.anim.play("idle", 1.0)
 	
@@ -85,6 +95,9 @@ func take_damage(damage_amount: int) -> void:
 			health -= damage_amount * 4
 		if health <= 0:
 			state_machine.on_change_state(state_machine.current_state, "EnemyDead")
+			if spawn_id > -1:
+				Gamestate.remove_spawn(spawn_id)
+
 
 func attack() -> void:
 	if b_can_attack:

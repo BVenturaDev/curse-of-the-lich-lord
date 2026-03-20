@@ -1,24 +1,24 @@
-[gd_scene format=3 uid="uid://cguw3pbl6mdcn"]
+[gd_scene format=3 uid="uid://coscib58uiet1"]
 
-[ext_resource type="Script" uid="uid://cf5d5hky2yk2w" path="res://src/entities/characters/ai/enemy.gd" id="1_5qvp7"]
-[ext_resource type="PackedScene" uid="uid://5jpjc2mboldd" path="res://scenes/models/characters/skeleton.tscn" id="1_tb6ca"]
-[ext_resource type="PackedScene" uid="uid://cwq0hxh8p031q" path="res://scenes/entities/stateMachine.tscn" id="3_mqjve"]
-[ext_resource type="Script" uid="uid://bmn3uy4qjgmni" path="res://src/entities/characters/ai/states/enemy_idle.gd" id="4_mqjve"]
-[ext_resource type="Script" uid="uid://dfngf4qorgris" path="res://src/entities/characters/ai/states/enemy_chase.gd" id="5_o7px5"]
-[ext_resource type="Script" uid="uid://kx46qwae5ik7" path="res://src/entities/characters/ai/states/enemy_attack.gd" id="6_amhhe"]
-[ext_resource type="Script" uid="uid://corbwm1k4hysh" path="res://src/entities/characters/ai/states/enemy_dead.gd" id="7_rb81u"]
+[ext_resource type="Script" uid="uid://cf5d5hky2yk2w" path="res://src/entities/characters/ai/enemy.gd" id="1_b1swh"]
+[ext_resource type="PackedScene" uid="uid://c3cljievapdyt" path="res://scenes/models/characters/lich.tscn" id="2_b1swh"]
+[ext_resource type="PackedScene" uid="uid://cwq0hxh8p031q" path="res://scenes/entities/stateMachine.tscn" id="3_e5btt"]
+[ext_resource type="Script" uid="uid://bmn3uy4qjgmni" path="res://src/entities/characters/ai/states/enemy_idle.gd" id="4_gih6r"]
+[ext_resource type="Script" uid="uid://dfngf4qorgris" path="res://src/entities/characters/ai/states/enemy_chase.gd" id="5_0iyem"]
+[ext_resource type="Script" uid="uid://kx46qwae5ik7" path="res://src/entities/characters/ai/states/enemy_attack.gd" id="6_e57ci"]
+[ext_resource type="Script" uid="uid://corbwm1k4hysh" path="res://src/entities/characters/ai/states/enemy_dead.gd" id="7_2n6ar"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13oou"]
 radius = 0.30517578
 height = 1.8569336
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mqjve"]
-radius = 6.0
+radius = 8.0
 
-[node name="Skeleton" type="CharacterBody3D" unique_id=1584703577 node_paths=PackedStringArray("nav_agent", "state_machine", "model") groups=["Enemy"]]
+[node name="Lich" type="CharacterBody3D" unique_id=1584703577 node_paths=PackedStringArray("nav_agent", "state_machine", "model") groups=["Enemy"]]
 collision_layer = 2
 floor_max_angle = 1.5707964
-script = ExtResource("1_5qvp7")
+script = ExtResource("1_b1swh")
 nav_agent = NodePath("NavigationAgent3D")
 state_machine = NodePath("StateMachine")
 model = NodePath("skeleton")
@@ -27,28 +27,28 @@ model = NodePath("skeleton")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9284668, 0)
 shape = SubResource("CapsuleShape3D_13oou")
 
-[node name="skeleton" parent="." unique_id=964237925 instance=ExtResource("1_tb6ca")]
+[node name="skeleton" parent="." unique_id=1252920331 instance=ExtResource("2_b1swh")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1584843150]
 path_height_offset = 0.5
 
-[node name="StateMachine" parent="." unique_id=414335859 node_paths=PackedStringArray("init_state") instance=ExtResource("3_mqjve")]
+[node name="StateMachine" parent="." unique_id=414335859 node_paths=PackedStringArray("init_state") instance=ExtResource("3_e5btt")]
 init_state = NodePath("EnemyIdle")
 
 [node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=1501448983]
-script = ExtResource("4_mqjve")
+script = ExtResource("4_gih6r")
 metadata/_custom_type_script = "uid://bmn3uy4qjgmni"
 
 [node name="EnemyChase" type="Node" parent="StateMachine" unique_id=1784317289]
-script = ExtResource("5_o7px5")
+script = ExtResource("5_0iyem")
 metadata/_custom_type_script = "uid://dfngf4qorgris"
 
 [node name="EnemyAttack" type="Node" parent="StateMachine" unique_id=1825675520]
-script = ExtResource("6_amhhe")
+script = ExtResource("6_e57ci")
 metadata/_custom_type_script = "uid://kx46qwae5ik7"
 
 [node name="EnemyDead" type="Node" parent="StateMachine" unique_id=188761766]
-script = ExtResource("7_rb81u")
+script = ExtResource("7_2n6ar")
 metadata/_custom_type_script = "uid://corbwm1k4hysh"
 
 [node name="ListenArea3D" type="Area3D" parent="." unique_id=1737613791]
