@@ -11,4 +11,4 @@ func interact() -> void:
 		b_pressed = true
 		anim.play("pressed")
 		gate.anim.play("open")
-		Gamestate.open_levers.append(lever_id)
+		Gamestate.open_lever(lever_id)

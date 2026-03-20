@@ -29,6 +29,9 @@ func on_take_damage(dmg_amount: int) -> void:
 		healthbar.set_health(max_health - current_health)
 
 func on_add_health(health_amount: int) -> void:
+	if Gamestate.b_first_health:
+		Gamestate.b_first_health = false
+		get_parent().tutorials.toggle_health()
 	current_health += health_amount
 	max_health += health_amount
 	if max_health + health_amount > 40:

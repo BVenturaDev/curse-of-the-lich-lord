@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c53msq5ln1oe0" path="res://scenes/ui/healthbar.tscn" id="2_uatu6"]
 [ext_resource type="Script" uid="uid://d0i1fxbu676v0" path="res://src/components/health_component.gd" id="3_620ub"]
 [ext_resource type="PackedScene" uid="uid://babtf684w6rdd" path="res://assets/models/props/Sword.glb" id="4_nrr0s"]
+[ext_resource type="PackedScene" uid="uid://dmixdv6xhjlod" path="res://scenes/ui/tutorials.tscn" id="5_ba871"]
+[ext_resource type="PackedScene" uid="uid://bb8fl346gwwid" path="res://scenes/ui/pause_menu.tscn" id="5_r0tm6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p2io3"]
 
@@ -107,7 +109,12 @@ shape = SubResource("BoxShape3D_nrr0s")
 target_position = Vector3(0, 0, -1)
 collision_mask = 16
 
+[node name="Tutorials" parent="." unique_id=923580729 instance=ExtResource("5_ba871")]
+
 [node name="Healthbar" parent="." unique_id=1447273698 instance=ExtResource("2_uatu6")]
+
+[node name="PauseMenu" parent="." unique_id=1564603141 instance=ExtResource("5_r0tm6")]
+visible = false
 
 [node name="HealthComponent" type="Node" parent="." unique_id=2079560868 node_paths=PackedStringArray("healthbar")]
 script = ExtResource("3_620ub")
@@ -269,15 +276,6 @@ You hear the Lich laugh.
 Now he is free from the curse,
 and you take his place."
 horizontal_alignment = 1
-
-[node name="Tutorials" type="Control" parent="." unique_id=1149711469]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 

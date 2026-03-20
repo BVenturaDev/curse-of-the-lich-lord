@@ -9,6 +9,8 @@ extends CharacterBody3D
 @onready var win_screen: Control = $WinScreen
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var start_screen: Control = $StartScreen
+@onready var tutorials: Control = $Tutorials
+@onready var pause_menu: Control = $PauseMenu
 
 const SPEED: float = 5.0
 const SNEAK_SPEED: float = 2.5
@@ -34,16 +36,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		cam_tilt.rotation.x = clamp(cam_tilt.rotation.x, -0.3 * PI, 0.3 * PI)
 		cam_tilt.rotation.z = 0.0
 
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			
+func _physics_process(delta: float) -> void:			
 	if Input.is_action_pressed("ui_accept"):
 		start_screen.visible = false
 		b_started = true
+		if Gamestate.b_first_start:
+			Gamestate.b_first_start = false
+			tutorials.toggle_sneak()
 	
 	if not b_started:
 		return
@@ -79,8 +78,8 @@ func _physics_process(delta: float) -> void:
 			if body.is_in_group("Enemy"):
 				b_can_hit = false
 				body.take_damage(attack_damage)
-				b_is_sneaking = false
-				cam_tilt.position.y = 1.5
+				#b_is_sneaking = false
+				#cam_tilt.position.y = 1.5
 		
 	
 	if Input.is_action_just_pressed("sneak"):
@@ -125,6 +124,9 @@ func _can_interact() -> bool:
 	if interact_cast.is_colliding():
 		var body: Node3D = interact_cast.get_collider().get_parent().get_parent()
 		if not body.b_pressed:
+			if Gamestate.b_first_lever:
+				Gamestate.b_first_lever = false
+				tutorials.toggle_lever()
 			return true
 	return false
 

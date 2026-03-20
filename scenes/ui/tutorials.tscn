@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dmixdv6xhjlod"]
+
+[ext_resource type="Script" uid="uid://c0ne15rftokxe" path="res://src/ui/tutorials.gd" id="1_5ed72"]
+
+[node name="Tutorials" type="Control" unique_id=923580729]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_5ed72")
+
+[node name="Sneak" type="Label" parent="." unique_id=588757854]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -98.0
+offset_right = 138.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Press c to Sneak
+Sneak Attacks will slay weaker foes."
+horizontal_alignment = 1
+
+[node name="Health" type="Label" parent="." unique_id=605129220]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -98.0
+offset_right = 138.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Life Shards Increase your health.
+The Lich welcomes this,
+you will make a powerful guard."
+horizontal_alignment = 1
+
+[node name="Lever" type="Label" parent="." unique_id=1545745627]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -98.0
+offset_right = 138.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Levers open locked Gates.
+Some allow you to progress further in the crypt.
+Others open alternate catch up routes."
+horizontal_alignment = 1

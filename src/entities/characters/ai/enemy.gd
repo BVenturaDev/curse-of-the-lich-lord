@@ -23,6 +23,7 @@ var b_has_LOS: bool = false
 var b_is_attacking: bool = false
 var b_can_attack: bool = true
 var b_can_hit: bool = true
+var b_under_attack: bool = false
 var health: int = 8
 var spawn_id: int = -1
 
@@ -43,8 +44,10 @@ func _physics_process(delta: float) -> void:
 	
 	if player and not player.b_dead:
 		if _LOS_player() \
-		or (b_can_hear and not player.b_is_sneaking and player.b_is_moving):
+		or (b_can_hear and not player.b_is_sneaking and player.b_is_moving) \
+		or b_under_attack:
 			b_has_aggro = true
+			b_under_attack = false
 			if state_machine.get_current_state() == "EnemyIdle":
 				state_machine.on_change_state(state_machine.current_state, "EnemyChase")
 		else:
@@ -60,7 +63,7 @@ func _physics_process(delta: float) -> void:
 		
 		# Turn Towards Nav Goal
 		var tar_rot: float = 0.0
-		if b_is_attacking:
+		if b_has_LOS:
 			var player_dir: Vector3 = global_position.direction_to(player.global_position).normalized()
 			tar_rot = player_dir.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
 		else:
@@ -89,6 +92,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage_amount: int) -> void:
 	if state_machine.get_current_state() != "EnemyDead":
+		b_under_attack = true
 		if b_has_aggro:
 			health -= damage_amount
 		else:
