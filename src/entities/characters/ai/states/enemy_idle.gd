@@ -22,7 +22,10 @@ func Physics_Update(_delta: float) -> void:
 			b_has_target = true
 		elif character.nav_agent.is_navigation_finished() and character.b_has_target:
 			character.b_has_target = false
-			timer.wait_time = randf_range(2.0, 10.0)
+			if character.b_lich:
+				timer.wait_time = randf_range(1.0, 3.0)
+			else:
+				timer.wait_time = randf_range(2.0, 10.0)
 			timer.start()
 
 func _on_timeout():

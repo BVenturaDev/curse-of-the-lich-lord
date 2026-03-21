@@ -10,7 +10,7 @@ var b_first_lever: bool = true
 
 func reset_game(player: CharacterBody3D):
 	death_positions.append(player.global_position)
-	death_health.append(player.health_component.max_health)
+	death_health.append(player.health_component.max_health / 2)
 	get_tree().reload_current_scene()
 
 func remove_spawn(spawn_id: int) -> void:

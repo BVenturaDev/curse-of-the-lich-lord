@@ -22,6 +22,8 @@ script = ExtResource("1_b1swh")
 nav_agent = NodePath("NavigationAgent3D")
 state_machine = NodePath("StateMachine")
 model = NodePath("skeleton")
+b_lich = true
+health = 12
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=899877823]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9284668, 0)

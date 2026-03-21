@@ -12,7 +12,9 @@ func _ready():
 	
 func Enter() -> void:
 	get_parent().get_parent().model.ragdoll()
-	timer.start()
+	var chance: int = randi_range(1, 4)
+	if chance == 3:
+		timer.start()
 	
 func _on_timeout() -> void:
 	var new_shard = life_shard_scene.instantiate()

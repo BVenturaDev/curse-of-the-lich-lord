@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://babtf684w6rdd" path="res://assets/models/props/Sword.glb" id="4_nrr0s"]
 [ext_resource type="PackedScene" uid="uid://dmixdv6xhjlod" path="res://scenes/ui/tutorials.tscn" id="5_ba871"]
 [ext_resource type="PackedScene" uid="uid://bb8fl346gwwid" path="res://scenes/ui/pause_menu.tscn" id="5_r0tm6"]
+[ext_resource type="Script" uid="uid://cod73g4p0r2by" path="res://src/ui/start_screen.gd" id="7_d14gw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p2io3"]
 
@@ -151,6 +152,7 @@ text = "Press E to Interact"
 horizontal_alignment = 1
 
 [node name="StartScreen" type="Control" parent="." unique_id=326724821]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,6 +160,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("7_d14gw")
 
 [node name="ColorRect" type="ColorRect" parent="StartScreen" unique_id=657866734]
 layout_mode = 1

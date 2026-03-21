@@ -23,7 +23,6 @@ var b_is_moving: bool = false
 var b_attacking: bool = false
 var b_can_hit: bool = true
 var b_dead: bool = false
-var b_started: bool = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -37,16 +36,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		cam_tilt.rotation.z = 0.0
 
 func _physics_process(delta: float) -> void:			
-	if Input.is_action_pressed("ui_accept"):
-		start_screen.visible = false
-		b_started = true
-		if Gamestate.b_first_start:
-			Gamestate.b_first_start = false
-			tutorials.toggle_sneak()
-	
-	if not b_started:
-		return
-		
 	if b_dead:
 		velocity = Vector3()
 		move_and_slide()

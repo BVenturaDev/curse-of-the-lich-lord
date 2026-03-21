@@ -4,15 +4,19 @@ class_name enemy
 @export var nav_agent: NavigationAgent3D
 @export var state_machine: Node
 @export var model: Node3D
+@export var b_lich: bool = false
+@export var health: int = 8
 @onready var fov_ray: RayCast3D = $FOVRayCast3D
 @onready var death_light: OmniLight3D = $DeathOmniLight3D
 
+const lich_bolt_scene = preload("res://scenes/entities/abilities/lich_bolt.tscn")
 const SPEED: float = 3.0
 const ATTACK_SPEED: float = 5.5
 const TURN_SPEED: float = 0.1
 const ATTACK_DAMAGE: int = 2
 
 var attack_timer: Timer = Timer.new()
+var bolt_timer: Timer = Timer.new()
 
 var player: CharacterBody3D
 var b_has_aggro: bool = false
@@ -24,7 +28,7 @@ var b_is_attacking: bool = false
 var b_can_attack: bool = true
 var b_can_hit: bool = true
 var b_under_attack: bool = false
-var health: int = 8
+var b_bolt_timer: bool = true
 var spawn_id: int = -1
 
 func _ready() -> void:
@@ -33,6 +37,10 @@ func _ready() -> void:
 	attack_timer.one_shot = true
 	attack_timer.wait_time = 1.0
 	attack_timer.timeout.connect(_on_attack_timeout)
+	add_child(bolt_timer)
+	bolt_timer.one_shot = true
+	bolt_timer.wait_time = 3.0
+	bolt_timer.timeout.connect(_on_bolt_timeout)
 	
 func _physics_process(delta: float) -> void:
 	if state_machine.get_current_state() == "EnemyDead":
@@ -48,12 +56,16 @@ func _physics_process(delta: float) -> void:
 		or b_under_attack:
 			b_has_aggro = true
 			b_under_attack = false
-			if state_machine.get_current_state() == "EnemyIdle":
+			if state_machine.get_current_state() == "EnemyIdle" and not b_lich:
 				state_machine.on_change_state(state_machine.current_state, "EnemyChase")
 		else:
 			b_has_aggro = false
 	else:
 		b_has_aggro = false
+		
+	if b_lich and b_has_LOS and b_bolt_timer:
+		if global_position.distance_to(player.global_position) <= 20.0:
+			_bolt()
 	
 	var direction: Vector3 = Vector3()
 	# Find Path to Target
@@ -61,14 +73,14 @@ func _physics_process(delta: float) -> void:
 		var next_path_pos: Vector3 = nav_agent.get_next_path_position()
 		direction = global_position.direction_to(next_path_pos).normalized()
 		
-		# Turn Towards Nav Goal
-		var tar_rot: float = 0.0
-		if b_has_LOS:
-			var player_dir: Vector3 = global_position.direction_to(player.global_position).normalized()
-			tar_rot = player_dir.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
-		else:
-			tar_rot = direction.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
-		rotation.y = lerp_angle(rotation.y, tar_rot, TURN_SPEED)
+	# Turn Towards Nav Goal
+	var tar_rot: float = 0.0
+	if b_has_aggro:
+		var player_dir: Vector3 = global_position.direction_to(player.global_position).normalized()
+		tar_rot = player_dir.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
+	else:
+		tar_rot = direction.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
+	rotation.y = lerp_angle(rotation.y, tar_rot, TURN_SPEED)
 		
 	# Move towards Current Nav Goal
 	if direction:
@@ -101,6 +113,7 @@ func take_damage(damage_amount: int) -> void:
 			state_machine.on_change_state(state_machine.current_state, "EnemyDead")
 			if spawn_id > -1:
 				Gamestate.remove_spawn(spawn_id)
+		#print(health)
 
 
 func attack() -> void:
@@ -134,6 +147,14 @@ func _LOS_player() -> bool:
 		b_has_LOS = false
 		return false
 
+func _bolt() -> void:
+	b_bolt_timer = false
+	bolt_timer.start()
+	var new_bolt: CharacterBody3D = lich_bolt_scene.instantiate()
+	get_tree().get_root().add_child(new_bolt)
+	new_bolt.global_position = global_position
+	new_bolt.global_position.y += 1.0
+
 func _on_listen_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		b_can_hear = true
@@ -144,3 +165,6 @@ func _on_listen_area_3d_body_exited(body: Node3D) -> void:
 
 func _on_attack_timeout() -> void:
 	b_can_attack = true
+
+func _on_bolt_timeout() -> void:
+	b_bolt_timer = true

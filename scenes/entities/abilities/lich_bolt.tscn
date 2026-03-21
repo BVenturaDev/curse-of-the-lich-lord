@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d1vnh75mbxerk"]
+
+[ext_resource type="Script" uid="uid://csklwy0xqipf2" path="res://src/entities/abilities/lich_bolt.gd" id="1_3duic"]
+[ext_resource type="PackedScene" uid="uid://bt46kmsh7xg1h" path="res://scenes/vfx/vfx_fire_green.tscn" id="2_iheyt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uc3hw"]
+
+[node name="LichBolt" type="CharacterBody3D" unique_id=107725846]
+script = ExtResource("1_3duic")
+
+[node name="VFXFireGreen" parent="." unique_id=1807125740 instance=ExtResource("2_iheyt")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1025954710]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=189552663]
+shape = SubResource("SphereShape3D_uc3hw")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
