@@ -218,7 +218,7 @@ omni_range = 39.497593
 [node name="Player" parent="." unique_id=1124181715 instance=ExtResource("2_srduu")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.75, 3, 0)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=28242943]
+[node name="MusicAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=28242943]
 process_mode = 3
 stream = ExtResource("4_yc5ro")
 autoplay = true
@@ -307,3 +307,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.228125, -30, -10.422)
 
 [node name="Scroll" parent="." unique_id=1488315199 instance=ExtResource("11_c7dwr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, -30, -39)
+
+[connection signal="finished" from="MusicAudioStreamPlayer2D" to="." method="_on_music_audio_stream_player_2d_finished"]

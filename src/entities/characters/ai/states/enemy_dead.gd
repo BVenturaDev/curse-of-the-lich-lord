@@ -12,7 +12,7 @@ func _ready():
 	
 func Enter() -> void:
 	get_parent().get_parent().model.ragdoll()
-	var chance: int = randi_range(1, 4)
+	var chance: int = randi_range(1, 3)
 	if chance == 3:
 		timer.start()
 	
