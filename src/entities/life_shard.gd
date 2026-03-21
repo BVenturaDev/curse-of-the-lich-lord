@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 var timer: Timer = Timer.new()
 var player_body: Node3D
 
@@ -11,6 +13,7 @@ func _ready():
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		player_body = body
+		audio.play()
 		timer.start()
 		
 func _on_add_health() -> void:
