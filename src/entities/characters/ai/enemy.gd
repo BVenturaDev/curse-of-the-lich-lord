@@ -30,6 +30,7 @@ var b_can_hit: bool = true
 var b_under_attack: bool = false
 var b_bolt_timer: bool = true
 var spawn_id: int = -1
+var tar_rot: float = 0.0
 
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("Player")[0]
@@ -68,18 +69,17 @@ func _physics_process(delta: float) -> void:
 			_bolt()
 	
 	var direction: Vector3 = Vector3()
+	
 	# Find Path to Target
 	if b_has_target:
 		var next_path_pos: Vector3 = nav_agent.get_next_path_position()
 		direction = global_position.direction_to(next_path_pos).normalized()
-		
-	# Turn Towards Nav Goal
-	var tar_rot: float = 0.0
-	if b_has_aggro:
+		tar_rot = direction.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
+	elif b_has_aggro:
 		var player_dir: Vector3 = global_position.direction_to(player.global_position).normalized()
 		tar_rot = player_dir.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
-	else:
-		tar_rot = direction.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
+
+	# Turn Towards Nav Goal
 	rotation.y = lerp_angle(rotation.y, tar_rot, TURN_SPEED)
 		
 	# Move towards Current Nav Goal

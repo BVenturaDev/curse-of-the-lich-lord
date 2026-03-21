@@ -12,7 +12,8 @@
 radius = 0.30517578
 height = 1.8569336
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_mqjve"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rb81u"]
+height = 3.0
 radius = 6.0
 
 [node name="Skeleton" type="CharacterBody3D" unique_id=1584703577 node_paths=PackedStringArray("nav_agent", "state_machine", "model") groups=["Enemy"]]
@@ -55,7 +56,7 @@ metadata/_custom_type_script = "uid://corbwm1k4hysh"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ListenArea3D" unique_id=1073618675]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("SphereShape3D_mqjve")
+shape = SubResource("CylinderShape3D_rb81u")
 
 [node name="FOVRayCast3D" type="RayCast3D" parent="." unique_id=1362207560]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5916954, 0)

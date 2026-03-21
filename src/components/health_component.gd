@@ -7,7 +7,7 @@ class_name HealthComponent
 var current_health: int
 var max_health: int
 
-const ROT_TIME: float = 10.0
+const ROT_TIME: float = 20.0
 
 var rot_timer: Timer = Timer.new()
 
