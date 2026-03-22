@@ -235,7 +235,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
-text = "You have been told that your only hope
+text = "You have been told that the only hope
 for a cure to your curse lies in this crypt.
 
 Your life is rapidly slipping away, 
@@ -243,7 +243,7 @@ acquire Life Shards to extend it
 
 The cure must be on the 
 Lich's Scroll of Necromancy.
-
+STEAL IT!
 
 Press Space to Start"
 horizontal_alignment = 1
