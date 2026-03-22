@@ -69,7 +69,7 @@ transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08
 transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 17.25, -12, -8.25)
 
 [node name="Gate5" parent="NavigationRegion3D" unique_id=1277154799 instance=ExtResource("6_w0mg0")]
-transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, -15.75, -18, 12.75)
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, -15.75, -18, 12.75)
 
 [node name="Gate6" parent="NavigationRegion3D" unique_id=2061144326 instance=ExtResource("6_w0mg0")]
 transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, -18.5, -12, 0.75)
