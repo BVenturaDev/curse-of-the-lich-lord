@@ -8,6 +8,9 @@ class_name enemy
 @export var health: int = 8
 @onready var fov_ray: RayCast3D = $FOVRayCast3D
 @onready var death_light: OmniLight3D = $DeathOmniLight3D
+@onready var hit_stream: AudioStreamPlayer3D = $HitStreamPlayer3D
+@onready var aggro_stream: AudioStreamPlayer3D = $AggroStreamPlayer3D
+@onready var attack_stream: AudioStreamPlayer3D = $AttackStreamPlayer3D
 
 const lich_bolt_scene = preload("res://scenes/entities/abilities/lich_bolt.tscn")
 const SPEED: float = 3.0
@@ -55,6 +58,7 @@ func _physics_process(delta: float) -> void:
 		if _LOS_player() \
 		or (b_can_hear and not player.b_is_sneaking and player.b_is_moving) \
 		or b_under_attack:
+			aggro_stream.play
 			b_has_aggro = true
 			b_under_attack = false
 			if state_machine.get_current_state() == "EnemyIdle" and not b_lich:
@@ -104,6 +108,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage_amount: int) -> void:
 	if state_machine.get_current_state() != "EnemyDead":
+		hit_stream.play()
 		b_under_attack = true
 		if b_has_aggro:
 			health -= damage_amount
@@ -118,6 +123,7 @@ func take_damage(damage_amount: int) -> void:
 
 func attack() -> void:
 	if b_can_attack:
+		attack_stream.play()
 		b_is_attacking = true
 		b_can_attack = false
 		b_can_hit = true

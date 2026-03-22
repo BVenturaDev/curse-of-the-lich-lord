@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var gate_stream: AudioStreamPlayer3D = $GateStreamPlayer3D
 @onready var anim: AnimationPlayer = $AnimationPlayer
 #@export var nav: NavigationRegion3D
 

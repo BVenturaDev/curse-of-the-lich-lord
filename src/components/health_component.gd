@@ -22,8 +22,10 @@ func _ready() -> void:
 	
 func on_take_damage(dmg_amount: int) -> void:
 	if not get_parent().b_dead:
+		get_parent().hit_stream.play()
 		current_health -= dmg_amount
 		if current_health <= 0:
+			get_parent().death_stream.play()
 			current_health = 0
 			get_parent().b_dead = true
 		healthbar.set_health(max_health - current_health)
@@ -32,6 +34,7 @@ func on_add_health(health_amount: int) -> void:
 	if Gamestate.b_first_health:
 		Gamestate.b_first_health = false
 		get_parent().tutorials.toggle_health()
+	get_parent().health_stream.play()
 	current_health += health_amount
 	max_health += health_amount
 	if max_health + health_amount > 40:

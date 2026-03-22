@@ -1,7 +1,10 @@
 extends Control
 
 func _ready():
-	get_tree().paused = true
+	if Gamestate.b_first_start:
+		get_tree().paused = true
+	else:
+		visible = false
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_accept"):

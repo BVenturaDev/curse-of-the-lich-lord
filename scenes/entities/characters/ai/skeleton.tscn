@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://dfngf4qorgris" path="res://src/entities/characters/ai/states/enemy_chase.gd" id="5_o7px5"]
 [ext_resource type="Script" uid="uid://kx46qwae5ik7" path="res://src/entities/characters/ai/states/enemy_attack.gd" id="6_amhhe"]
 [ext_resource type="Script" uid="uid://corbwm1k4hysh" path="res://src/entities/characters/ai/states/enemy_dead.gd" id="7_rb81u"]
+[ext_resource type="AudioStream" uid="uid://cqrs08d3aoom3" path="res://assets/sfx/skeleton_hit.wav" id="8_kepx5"]
+[ext_resource type="AudioStream" uid="uid://bh4rp3wcqpuet" path="res://assets/sfx/skeleton_attack.wav" id="9_aybul"]
+[ext_resource type="AudioStream" uid="uid://sr52gf7mbq81" path="res://assets/sfx/skeleton_aggro.wav" id="10_v67xx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13oou"]
 radius = 0.30517578
@@ -65,6 +68,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5916954, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3199803, 0.048165053)
 visible = false
 light_color = Color(0, 0.44623333, 0.14251971, 1)
+
+[node name="HitStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=535332093]
+stream = ExtResource("8_kepx5")
+
+[node name="AttackStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=120518693]
+stream = ExtResource("9_aybul")
+
+[node name="AggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1976774147]
+stream = ExtResource("10_v67xx")
 
 [connection signal="body_entered" from="ListenArea3D" to="." method="_on_listen_area_3d_body_entered"]
 [connection signal="body_exited" from="ListenArea3D" to="." method="_on_listen_area_3d_body_exited"]

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://csklwy0xqipf2" path="res://src/entities/abilities/lich_bolt.gd" id="1_3duic"]
 [ext_resource type="PackedScene" uid="uid://bt46kmsh7xg1h" path="res://scenes/vfx/vfx_fire_green.tscn" id="2_iheyt"]
+[ext_resource type="AudioStream" uid="uid://d37jg6oujamg1" path="res://assets/sfx/lich_bolt.wav" id="3_taksd"]
+[ext_resource type="AudioStream" uid="uid://bbfrm7x56onec" path="res://assets/sfx/lich_bolt_impact.wav" id="4_rde4o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uc3hw"]
 
@@ -15,4 +17,11 @@ script = ExtResource("1_3duic")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=189552663]
 shape = SubResource("SphereShape3D_uc3hw")
 
+[node name="BoltStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=502380652]
+stream = ExtResource("3_taksd")
+
+[node name="BoltImpactStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1755294454]
+stream = ExtResource("4_rde4o")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="finished" from="BoltImpactStreamPlayer" to="." method="_on_bolt_impact_stream_player_finished"]

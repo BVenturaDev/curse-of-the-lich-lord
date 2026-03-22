@@ -11,6 +11,12 @@ extends CharacterBody3D
 @onready var start_screen: Control = $StartScreen
 @onready var tutorials: Control = $Tutorials
 @onready var pause_menu: Control = $PauseMenu
+@onready var hit_stream: AudioStreamPlayer3D = $HitStreamPlayer3D
+@onready var footstep_stream: AudioStreamPlayer3D = $FootstepStreamPlayer3D
+@onready var death_stream: AudioStreamPlayer3D = $DeathStreamPlayer3D
+@onready var attack_stream: AudioStreamPlayer3D = $AttackStreamPlayer3D
+@onready var health_stream: AudioStreamPlayer3D = $HealthStreamPlayer3D
+
 
 const SPEED: float = 5.0
 const SNEAK_SPEED: float = 2.5
@@ -35,7 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		cam_tilt.rotation.x = clamp(cam_tilt.rotation.x, -0.3 * PI, 0.3 * PI)
 		cam_tilt.rotation.z = 0.0
 
-func _physics_process(delta: float) -> void:			
+func _physics_process(delta: float) -> void:	
 	if b_dead:
 		velocity = Vector3()
 		move_and_slide()
@@ -58,6 +64,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		
 	if Input.is_action_just_pressed("attack") and not b_attacking:
+		attack_stream.play()
 		anim.play("attack")
 		b_attacking = true
 		b_can_hit = true
@@ -69,13 +76,17 @@ func _physics_process(delta: float) -> void:
 				body.take_damage(attack_damage)
 				#b_is_sneaking = false
 				#cam_tilt.position.y = 1.5
-		
+	
+	if b_is_moving and not footstep_stream.playing:
+		footstep_stream.play()
 	
 	if Input.is_action_just_pressed("sneak"):
 		if b_is_sneaking:
+			footstep_stream.volume_db = -20.0
 			b_is_sneaking = false
 			cam_tilt.position.y = 1.5
 		else:
+			footstep_stream.volume_db = -30.0
 			b_is_sneaking = true
 			cam_tilt.position.y = 1.0
 

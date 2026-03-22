@@ -8,6 +8,12 @@ var b_first_start: bool = true
 var b_first_health: bool = true
 var b_first_lever: bool = true
 
+func full_reset():
+	death_health.clear()
+	death_positions.clear()
+	open_levers.clear()
+	get_tree().reload_current_scene()
+
 func reset_game(player: CharacterBody3D):
 	death_positions.append(player.global_position)
 	death_health.append(player.health_component.max_health / 2)
