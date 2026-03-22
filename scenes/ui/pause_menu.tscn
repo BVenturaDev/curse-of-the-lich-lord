@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bb8fl346gwwid"]
 
+[ext_resource type="Theme" uid="uid://pnlg6x6csk27" path="res://scenes/ui/theme.tres" id="1_0lmf7"]
 [ext_resource type="Script" uid="uid://da4h5ca1por4o" path="res://src/ui/pause_menu.gd" id="1_6tw0m"]
 
 [node name="PauseMenu" type="Control" unique_id=1564603141]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_0lmf7")
 script = ExtResource("1_6tw0m")
 
 [node name="PauseBox" type="Control" parent="." unique_id=4817541]
@@ -53,6 +55,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Resume"
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="PauseBox/BoxContainer/VBoxContainer" unique_id=1926776629]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="PauseBox/BoxContainer/VBoxContainer/HBoxContainer3" unique_id=1381540558]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Restart"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="PauseBox/BoxContainer/VBoxContainer" unique_id=929114634]
 layout_mode = 2
 
@@ -72,5 +82,6 @@ layout_mode = 2
 value = 50.0
 
 [connection signal="pressed" from="PauseBox/BoxContainer/VBoxContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseBox/BoxContainer/VBoxContainer/HBoxContainer3/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PauseBox/BoxContainer/VBoxContainer/HBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="value_changed" from="PauseBox/BoxContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

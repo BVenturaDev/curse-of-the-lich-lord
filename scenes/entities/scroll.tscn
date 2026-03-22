@@ -87,4 +87,6 @@ autoplay = &"spin"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.25)
 light_color = Color(0.9813172, 0.7701241, 0.6595689, 1)
 
+[node name="VictoryStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3" unique_id=184839523]
+
 [connection signal="body_entered" from="Scroll/Area3D" to="." method="_on_area_3d_body_entered"]

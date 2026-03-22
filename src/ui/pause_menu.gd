@@ -27,5 +27,10 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 func _on_h_slider_value_changed(value: float) -> void:
-	print(value)
+	#print(value)
 	AudioServer.set_bus_volume_db(0, value - 50.0)
+
+
+func _on_restart_button_pressed() -> void:
+	_unpause()
+	Gamestate.full_reset()

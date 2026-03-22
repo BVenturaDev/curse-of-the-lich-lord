@@ -1,0 +1,15 @@
+[gd_resource type="Theme" format=3 uid="uid://pnlg6x6csk27"]
+
+[ext_resource type="FontFile" uid="uid://dvmymq8t78md" path="res://assets/fonts/Evil Empire.otf" id="1_cqcnm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqcnm"]
+bg_color = Color(0.17, 0.17, 0.17, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lkiy"]
+bg_color = Color(0.18, 0.18, 0.18, 0.16862746)
+
+[resource]
+default_font = ExtResource("1_cqcnm")
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/styles/normal = SubResource("StyleBoxFlat_cqcnm")
+Panel/styles/panel = SubResource("StyleBoxFlat_1lkiy")

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d2jpv0fn8cfna" path="res://src/entities/characters/player/player.gd" id="1_rptfv"]
 [ext_resource type="PackedScene" uid="uid://c53msq5ln1oe0" path="res://scenes/ui/healthbar.tscn" id="2_uatu6"]
 [ext_resource type="Script" uid="uid://d0i1fxbu676v0" path="res://src/components/health_component.gd" id="3_620ub"]
+[ext_resource type="Theme" uid="uid://pnlg6x6csk27" path="res://scenes/ui/theme.tres" id="4_d1hxy"]
 [ext_resource type="PackedScene" uid="uid://babtf684w6rdd" path="res://assets/models/props/Sword.glb" id="4_nrr0s"]
 [ext_resource type="PackedScene" uid="uid://dmixdv6xhjlod" path="res://scenes/ui/tutorials.tscn" id="5_ba871"]
 [ext_resource type="PackedScene" uid="uid://bb8fl346gwwid" path="res://scenes/ui/pause_menu.tscn" id="5_r0tm6"]
@@ -116,11 +117,9 @@ target_position = Vector3(0, 0, -1)
 collision_mask = 16
 
 [node name="Tutorials" parent="." unique_id=923580729 instance=ExtResource("5_ba871")]
+theme = ExtResource("4_d1hxy")
 
 [node name="Healthbar" parent="." unique_id=1447273698 instance=ExtResource("2_uatu6")]
-
-[node name="PauseMenu" parent="." unique_id=1564603141 instance=ExtResource("5_r0tm6")]
-visible = false
 
 [node name="HealthComponent" type="Node" parent="." unique_id=2079560868 node_paths=PackedStringArray("healthbar")]
 script = ExtResource("3_620ub")
@@ -130,6 +129,50 @@ metadata/_custom_type_script = "uid://d0i1fxbu676v0"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=486524136]
 libraries/ = SubResource("AnimationLibrary_r0tm6")
 speed_scale = 0.5
+
+[node name="WinScreen" type="Control" parent="." unique_id=652022836]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_d1hxy")
+
+[node name="ColorRect" type="ColorRect" parent="WinScreen" unique_id=2066554904]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="WinScreen" unique_id=1545162396]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "You Have Found the Lich's Scroll!
+
+There was no cure.
+You hear the Lich laugh.
+Now he is free from the curse,
+and you take his place."
+horizontal_alignment = 1
+
+[node name="PauseMenu" parent="." unique_id=1564603141 instance=ExtResource("5_r0tm6")]
+visible = false
 
 [node name="InteractText" type="Control" parent="." unique_id=1363535853]
 visible = false
@@ -142,6 +185,7 @@ offset_top = 50.0
 offset_right = 20.0
 offset_bottom = 90.0
 grow_horizontal = 2
+theme = ExtResource("4_d1hxy")
 
 [node name="Label" type="Label" parent="InteractText" unique_id=334845798]
 layout_mode = 1
@@ -165,6 +209,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("4_d1hxy")
 script = ExtResource("7_d14gw")
 
 [node name="ColorRect" type="ColorRect" parent="StartScreen" unique_id=657866734]
@@ -212,6 +257,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("4_d1hxy")
 
 [node name="ColorRect" type="ColorRect" parent="DeathScreen" unique_id=1729688822]
 layout_mode = 1
@@ -243,46 +289,6 @@ Empowered by all of your Life Shards.
 Your soul will have no rest.
 
 Press Space to Continue"
-horizontal_alignment = 1
-
-[node name="WinScreen" type="Control" parent="." unique_id=652022836]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="WinScreen" unique_id=2066554904]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="WinScreen" unique_id=1545162396]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "You Have Found the Lich's Scroll!
-
-There was no cure.
-You hear the Lich laugh.
-Now he is free from the curse,
-and you take his place."
 horizontal_alignment = 1
 
 [node name="AttackStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1513523129]
